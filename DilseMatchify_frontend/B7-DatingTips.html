@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Dating Safety: Essential Tips for Indian Singles - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--pure-white));
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .blog-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Article Container */
+        .article-container {
+            background: white;
+            border-radius: 25px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .article-category {
+            background: linear-gradient(135deg, var(--accent-gold), #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin: 2.5rem 0 1.5rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-pink);
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content .hindi-text {
+            font-style: italic;
+            color: var(--secondary-pink);
+            font-weight: 500;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .article-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .article-content li::marker {
+            color: var(--primary-pink);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '🔒';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 87, 34, 0.05), rgba(255, 193, 7, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(255, 87, 34, 0.1);
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            font-style: italic;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+            text-align: center;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-facebook { background: #3b5998; }
+        .share-twitter { background: #1da1f2; }
+        .share-whatsapp { background: #25d366; }
+        .share-linkedin { background: #0077b5; }
+
+        .back-to-blog {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .article-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="footer-logo">
+                        <span class="heart-emoji">💖</span>
+                        <span class="dilse">DilSe MATCHIFY</span>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header">
+                <span class="article-category">🛡️ Dating Tips</span>
+                <h1 class="article-title">Online Dating Safety: Essential Tips for Indian Singles</h1>
+                <p class="article-subtitle">
+                    Stay safe while finding love online. Essential safety tips, red flags to watch out for, and how to protect yourself in the digital dating world.
+                </p>
+                <div class="hindi-text">
+                    सुरक्षा पहले, प्रेम बाद में। सावधानी ही सफलता की कुंजी है।
+                </div>
+                <div class="article-meta">
+                    <div class="author-info">
+                        <div class="author-avatar">VK</div>
+                        <div class="author-details">
+                            <h4>Vikram Kumar</h4>
+                            <span>Digital Safety Expert & Dating Coach</span>
+                        </div>
+                    </div>
+                    <div class="article-date">
+                        <i class="fas fa-calendar-alt"></i> December 1, 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <p>
+                    In the digital age, online dating has become one of the most popular ways to meet potential partners in India. While technology has made it easier to connect with like-minded individuals, it has also created new challenges and risks. As Indian singles navigate the world of online dating, safety should always be the top priority.
+                </p>
+
+                <h2>The Current Online Dating Landscape in India</h2>
+                <p>
+                    With millions of Indians using dating apps and websites, the online dating scene has exploded in recent years. From metropolitan cities to smaller towns, people are increasingly turning to digital platforms to find love. However, this growth has also attracted individuals with malicious intent, making safety awareness crucial.
+                </p>
+
+                <div class="quote-box">
+                    Your safety is worth more than any potential connection. Trust your instincts and prioritize your well-being above everything else.
+                </div>
+
+                <h2>Essential Safety Tips Before You Start</h2>
+                <p>
+                    Before diving into the world of online dating, it's important to set up your safety foundation. These preliminary steps can protect you from potential risks and help you have a safer dating experience.
+                </p>
+
+                <h3>Profile Setup Safety</h3>
+                <ul>
+                    <li><strong>Use a different email:</strong> Create a separate email address specifically for dating apps</li>
+                    <li><strong>Limit personal information:</strong> Avoid sharing your full name, workplace, or exact location</li>
+                    <li><strong>Choose photos wisely:</strong> Use recent photos but avoid ones that reveal your location or sensitive information</li>
+                    <li><strong>Privacy settings:</strong> Adjust your profile visibility and information sharing settings</li>
+                    <li><strong>Phone number protection:</strong> Consider using a Google Voice number or similar service</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "होशियारी में ही सुरक्षा है।" - Safety lies in being smart and cautious.
+                </div>
+
+                <h2>Red Flags to Watch Out For</h2>
+                <p>
+                    Learning to identify red flags early can save you from dangerous situations. These warning signs should never be ignored, regardless of how charming or attractive someone may seem.
+                </p>
+
+                <div class="warning-box">
+                    <h3>Major Warning Signs:</h3>
+                    <p>
+                        <strong>Too Perfect Profile:</strong> Photos that look too professional or model-like, with very limited personal information.
+                    </p>
+                    <p>
+                        <strong>Pushes for Personal Information:</strong> Asks for your address, workplace, or financial details too quickly.
+                    </p>
+                    <p>
+                        <strong>Avoids Video Calls:</strong> Refuses to video chat or always has excuses to avoid face-to-face interaction.
+                    </p>
+                    <p>
+                        <strong>Inconsistent Stories:</strong> Their stories don't match up or they contradict themselves frequently.
+                    </p>
+                </div>
+
+                <h3>Communication Red Flags</h3>
+                <ul>
+                    <li><strong>Love bombing:</strong> Professing love very quickly or being overly romantic too soon</li>
+                    <li><strong>Pressure tactics:</strong> Pushing you to meet immediately or share personal information</li>
+                    <li><strong>Financial requests:</strong> Asking for money, gifts, or financial help of any kind</li>
+                    <li><strong>Isolation attempts:</strong> Trying to get you to communicate only through one platform</li>
+                    <li><strong>Inappropriate content:</strong> Sending unsolicited intimate photos or messages</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "सच्चा प्रेम हमेशा धैर्य रखता है।" - True love is always patient.
+                </div>
+
+                <h2>Safe Communication Practices</h2>
+                <p>
+                    How you communicate with potential matches can significantly impact your safety. Following these practices will help you maintain control over your personal information while getting to know someone better.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Smart Communication Rules:</h3>
+                    <p>
+                        <strong>Keep Initial Conversations on the Platform:</strong> Don't rush to share your personal phone number or move to other messaging apps immediately.
+                    </p>
+                    <p>
+                        <strong>Video Chat Before Meeting:</strong> Always have at least one video call to verify the person's identity before meeting in person.
+                    </p>
+                    <p>
+                        <strong>Trust Your Gut:</strong> If something feels off during conversations, don't ignore that feeling.
+                    </p>
+                </div>
+
+                <h2>Meeting in Person Safely</h2>
+                <p>
+                    When you decide to meet someone from a dating app, taking the right precautions can make the difference between a safe date and a dangerous situation. Here's how to protect yourself when meeting in person.
+                </p>
+
+                <h3>First Date Safety Rules</h3>
+                <ul>
+                    <li><strong>Public places only:</strong> Always meet in crowded, public locations like cafes, restaurants, or malls</li>
+                    <li><strong>Own transportation:</strong> Drive yourself or use your own transportation to and from the date</li>
+                    <li><strong>Tell someone:</strong> Inform a trusted friend or family member about your plans and location</li>
+                    <li><strong>Phone charged:</strong> Ensure your phone is fully charged and you have emergency contacts ready</li>
+                    <li><strong>Separate arrival:</strong> Don't let them pick you up from your home or workplace</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h3>Never Compromise On:</h3>
+                    <p>
+                        <strong>Location Safety:</strong> If they insist on meeting at their place or a secluded location, it's a major red flag.
+                    </p>
+                    <p>
+                        <strong>Substance Control:</strong> Never leave your drink unattended or accept drinks you didn't see being made.
+                    </p>
+                    <p>
+                        <strong>Pressure Resistance:</strong> If they pressure you to do anything you're uncomfortable with, leave immediately.
+                    </p>
+                </div>
+
+                <h2>Protecting Your Digital Privacy</h2>
+                <p>
+                    Your digital footprint can reveal more about you than you realize. Protecting your online privacy is crucial for maintaining your safety in the digital dating world.
+                </p>
+
+                <h3>Privacy Protection Steps</h3>
+                <ul>
+                    <li><strong>Social media cleanup:</strong> Review your social media privacy settings and limit what strangers can see</li>
+                    <li><strong>Reverse image searches:</strong> Use tools like Google Images to check if someone's photos appear elsewhere online</li>
+                    <li><strong>Separate accounts:</strong> Consider creating separate social media accounts for dating if you're concerned about privacy</li>
+                    <li><strong>Location services:</strong> Turn off location sharing on dating apps and social media</li>
+                    <li><strong>Background checks:</strong> If you're serious about someone, consider doing a basic background check</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "निजता की रक्षा करना आपका अधिकार है।" - Protecting your privacy is your right.
+                </div>
+
+                <h2>Cultural Considerations for Indian Singles</h2>
+                <p>
+                    Indian culture adds unique dimensions to online dating safety. Understanding these cultural aspects can help you navigate potential challenges while staying true to your values.
+                </p>
+
+                <h3>Family and Social Considerations</h3>
+                <ul>
+                    <li><strong>Family involvement:</strong> Decide how much to involve your family in your online dating journey</li>
+                    <li><strong>Community reputation:</strong> Be mindful of how your online presence might affect your family's reputation</li>
+                    <li><strong>Religious compatibility:</strong> Discuss religious and cultural expectations early in conversations</li>
+                    <li><strong>Traditional values:</strong> Be clear about your boundaries regarding physical intimacy and traditional values</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Balancing Modern Dating with Traditional Values:</h3>
+                    <p>
+                        Remember that you can embrace modern dating while honoring your cultural values. There's no need to compromise your beliefs or safety for the sake of fitting in or pleasing others.
+                    </p>
+                </div>
+
+                <h2>What to Do If Something Goes Wrong</h2>
+                <p>
+                    Despite all precautions, sometimes things can go wrong. Knowing how to respond to dangerous situations can help protect you and others from potential harm.
+                </p>
+
+                <h3>Immediate Actions</h3>
+                <ul>
+                    <li><strong>Trust your instincts:</strong> If you feel unsafe, leave immediately</li>
+                    <li><strong>Contact authorities:</strong> Don't hesitate to call 100 (police) or 112 (emergency) if you're in danger</li>
+                    <li><strong>Document evidence:</strong> Save screenshots of concerning messages or profiles</li>
+                    <li><strong>Report to the platform:</strong> Use the app's reporting features to report suspicious behavior</li>
+                    <li><strong>Tell someone you trust:</strong> Share your experience with a trusted friend or family member</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h3>Remember:</h3>
+                    <p>
+                        It's never your fault if someone behaves inappropriately or dangerously. Don't blame yourself for trusting someone who turned out to be harmful.
+                    </p>
+                </div>
+
+                <h2>Building Healthy Online Dating Habits</h2>
+                <p>
+                    Creating good habits around online dating can help you stay safe while also improving your chances of finding meaningful connections. These practices will serve you well throughout your dating journey.
+                </p>
+
+                <h3>Healthy Dating Practices</h3>
+                <ul>
+                    <li><strong>Regular breaks:</strong> Take breaks from dating apps to avoid burnout and maintain perspective</li>
+                    <li><strong>Quality over quantity:</strong> Focus on meaningful conversations rather than collecting matches</li>
+                    <li><strong>Self-care:</strong> Maintain your mental health and don't let dating consume your life</li>
+                    <li><strong>Honest communication:</strong> Be honest about your intentions and expectations</li>
+                    <li><strong>Continuous learning:</strong> Stay updated on new safety features and threats in online dating</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "धैर्य और सावधानी के साथ सही व्यक्ति मिलेगा।" - With patience and caution, you'll find the right person.
+                </div>
+
+                <h2>Conclusion: Safe Dating is Smart Dating</h2>
+                <p>
+                    Online dating can be a wonderful way to meet your life partner, but it requires vigilance and smart decision-making. By following these safety tips and trusting your instincts, you can protect yourself while still being open to love and connection.
+                </p>
+
+                <p>
+                    Remember, the right person will respect your boundaries and safety concerns. Anyone who pressures you to ignore your safety instincts or compromises your well-being is not worth your time. Your safety is not negotiable, and the perfect match will understand and support that.
+                </p>
+
+                <div class="quote-box">
+                    Love should feel safe, respectful, and genuine. Never compromise your safety for the sake of romance.
+                </div>
+
+                <div class="hindi-text">
+                    "सुरक्षित प्रेम ही सच्चा प्रेम है।" - Safe love is true love.
+                </div>
+            </div>
+
+            <!-- Article Footer -->
+            <div class="article-footer">
+                <div class="social-share">
+                    <a href="#" class="share-btn share-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn share-twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <a href="blog.html" class="back-to-blog">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog Page
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Header button functionality
+        document.querySelector('.back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Homepage';
+                console.log('Navigate to homepage');
+            }, 1000);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList.contains('share-facebook') ? 'Facebook' :
+                                this.classList.contains('share-twitter') ? 'Twitter' :
+                                this.classList.contains('share-whatsapp') ? 'WhatsApp' : 'LinkedIn';
+                
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log(`Share on ${platform}`);
+            });
+        });
+
+        // Back to blog functionality
+        document.querySelector('.back-to-blog').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Blog Page';
+                console.log('Navigate to blog');
+            }, 1000);
+        });
+
+        // Smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Safety alert functionality
+        function showSafetyAlert() {
+            const alertBox = document.createElement('div');
+            alertBox.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #E91E63, #C44569); color: white; padding: 1rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; max-width: 300px;">
+                    <strong>Safety Reminder:</strong> Always trust your instincts and prioritize your safety!
+                    <button onclick="this.parentElement.remove()" style="background: none; border: none; color: white; float: right; cursor: pointer; font-size: 18px;">&times;</button>
+                </div>
+            `;
+            document.body.appendChild(alertBox);
+            
+            setTimeout(() => {
+                if (alertBox.parentElement) {
+                    alertBox.remove();
+                }
+            }, 5000);
+        }
+
+        // Show safety alert after 10 seconds
+        setTimeout(showSafetyAlert, 10000);
+    </script>
+</body>
+</html>

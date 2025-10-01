@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Conversation Starters for Your First Date - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--pure-white));
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .blog-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .heart-emoji {
+            font-size: 1.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Article Container */
+        .article-container {
+            background: white;
+            border-radius: 25px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .article-category {
+            background: linear-gradient(135deg, var(--accent-gold), #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin: 2.5rem 0 1.5rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-pink);
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content .hindi-text {
+            font-style: italic;
+            color: var(--secondary-pink);
+            font-weight: 500;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .conversation-starter {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .conversation-starter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
+        }
+
+        .starter-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .starter-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .starter-question {
+            font-size: 1.1rem;
+            color: var(--primary-pink);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .starter-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            font-style: italic;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .dos-donts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dos, .donts {
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .dos {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(129, 199, 132, 0.05));
+            border-left: 5px solid #4CAF50;
+        }
+
+        .donts {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.05), rgba(239, 154, 154, 0.05));
+            border-left: 5px solid #F44336;
+        }
+
+        .dos h3, .donts h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .dos h3 {
+            color: #4CAF50;
+        }
+
+        .donts h3 {
+            color: #F44336;
+        }
+
+        .dos ul, .donts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dos li, .donts li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .dos li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .donts li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #F44336;
+            font-weight: bold;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+            text-align: center;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-facebook { background: #3b5998; }
+        .share-twitter { background: #1da1f2; }
+        .share-whatsapp { background: #25d366; }
+        .share-linkedin { background: #0077b5; }
+
+        .back-to-blog {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .article-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+            }
+
+            .dos-donts {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="heart-emoji">💖</span>
+                    <span class="dilse">DilSe MATCHIFY</span>
+                </a>
+                            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header">
+                <span class="article-category">💬 Dating Tips</span>
+                <h1 class="article-title">10 Conversation Starters for Your First Date</h1>
+                <p class="article-subtitle">
+                    Break the ice with these proven conversation starters that will help you connect on a deeper level and make your first date memorable and engaging.
+                </p>
+                <div class="hindi-text">
+                    बातचीत ही दिलों को मिलाने का पहला कदम है।
+                </div>
+                <div class="article-meta">
+                    <div class="author-info">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-details">
+                            <h4>Dr. Priya Sharma</h4>
+                            <span>Dating Coach & Communication Expert</span>
+                        </div>
+                    </div>
+                    <div class="article-date">
+                        <i class="fas fa-calendar-alt"></i> December 15, 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <p>
+                    First dates can be nerve-wracking, especially when you're trying to make a good impression while staying true to yourself. The key to a successful first date isn't just about looking good – it's about creating meaningful connections through engaging conversations. Whether you're meeting someone through a dating app, a mutual friend, or a traditional setup, these conversation starters will help you break the ice and discover if you're truly compatible.
+                </p>
+
+                <div class="quote-box">
+                    The best conversations happen when two people are genuinely curious about each other's stories, dreams, and perspectives on life.
+                </div>
+
+                <h2>Why Good Conversation Matters</h2>
+                <p>
+                    In Indian culture, communication has always been valued as a cornerstone of relationships. A good conversation reveals character, values, and compatibility in ways that surface-level small talk simply cannot. When you ask thoughtful questions and listen actively, you create an atmosphere where both people feel comfortable sharing their authentic selves.
+                </p>
+
+                <div class="hindi-text">
+                    "सुनने की कला सिखाती है, बोलने की कला दिखाती है" - The art of listening teaches, the art of speaking reveals.
+                </div>
+
+                <h2>The 10 Best Conversation Starters</h2>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">1</div>
+                    <div class="starter-title">Travel Dreams & Adventures</div>
+                    <div class="starter-question">"What's one place you've always wanted to visit and why?"</div>
+                    <div class="starter-description">
+                        This question reveals their sense of adventure, cultural interests, and dreams. It often leads to stories about family trips, bucket list destinations, or cultural experiences they value. Pay attention to whether they mention wanting to explore Indian heritage sites or international destinations.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">2</div>
+                    <div class="starter-title">Childhood Memories</div>
+                    <div class="starter-question">"What's your favorite childhood memory involving your family?"</div>
+                    <div class="starter-description">
+                        Family is central to Indian culture, and this question helps you understand their family dynamics, values, and what brings them joy. It's a warm, nostalgic topic that usually makes people smile and share heartwarming stories.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">3</div>
+                    <div class="starter-title">Passion Projects</div>
+                    <div class="starter-question">"What's something you're passionate about that most people don't know?"</div>
+                    <div class="starter-description">
+                        This goes beyond their job or obvious interests. Maybe they're passionate about classical music, cooking regional dishes, or learning new languages. This question reveals their depth and hidden talents.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">4</div>
+                    <div class="starter-title">Cultural Connections</div>
+                    <div class="starter-question">"Which festival or tradition means the most to you and why?"</div>
+                    <div class="starter-description">
+                        Perfect for understanding their cultural values and how they connect with their heritage. This can lead to beautiful conversations about family traditions, childhood memories, and what they want to pass on to future generations.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">5</div>
+                    <div class="starter-title">Personal Growth</div>
+                    <div class="starter-question">"What's one thing you've learned about yourself in the past year?"</div>
+                    <div class="starter-description">
+                        This shows their capacity for self-reflection and growth. It can reveal recent challenges they've overcome, new skills they've developed, or insights about their personality and relationships.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">6</div>
+                    <div class="starter-title">Life Philosophy</div>
+                    <div class="starter-question">"What's a piece of advice that changed your perspective on life?"</div>
+                    <div class="starter-description">
+                        This deeper question reveals their values, wisdom, and how they approach life's challenges. It often leads to meaningful discussions about mentors, life experiences, and personal beliefs.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">7</div>
+                    <div class="starter-title">Simple Pleasures</div>
+                    <div class="starter-question">"What's your perfect way to spend a lazy Sunday?"</div>
+                    <div class="starter-description">
+                        This reveals their lifestyle preferences, whether they're introverted or extroverted, and how they like to relax. It's also a great way to imagine potential future dates or activities you could enjoy together.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">8</div>
+                    <div class="starter-title">Food & Memories</div>
+                    <div class="starter-question">"What's a dish that always reminds you of home?"</div>
+                    <div class="starter-description">
+                        Food is deeply connected to culture and family in India. This question often leads to stories about grandmothers' recipes, regional specialties, and family gatherings. It's also a great way to discover shared food preferences.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">9</div>
+                    <div class="starter-title">Dream Scenarios</div>
+                    <div class="starter-question">"If you could have dinner with anyone, living or historical, who would it be?"</div>
+                    <div class="starter-description">
+                        This reveals their interests, values, and who they admire. Whether they choose a historical figure, family member, or celebrity, their choice and reasoning tell you a lot about their personality and priorities.
+                    </div>
+                </div>
+
+                <div class="conversation-starter">
+                    <div class="starter-number">10</div>
+                    <div class="starter-title">Future Aspirations</div>
+                    <div class="starter-question">"What's something you hope to accomplish in the next few years?"</div>
+                    <div class="starter-description">
+                        This forward-looking question reveals their ambitions, whether they're career-focused, family-oriented, or pursuing personal goals. It's also a great way to understand their timeline and life priorities.
+                    </div>
+                </div>
+
+                <div class="hindi-text">
+                    "सच्चे प्रेम की शुरुआत अच्छी बातचीत से होती है।" - True love begins with good conversation.
+                </div>
+
+                <h2>The Art of Active Listening</h2>
+                <p>
+                    Asking great questions is only half the battle. The other half is listening actively and responding thoughtfully. Show genuine interest in their answers by asking follow-up questions, sharing related experiences, and maintaining eye contact. Remember, the goal isn't to interview them but to have a natural, flowing conversation.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Pro Tips for Better Conversations:</h3>
+                    <p>
+                        <strong>Be Present:</strong> Put away your phone and give them your full attention. This shows respect and allows for deeper connections.
+                    </p>
+                    <p>
+                        <strong>Share Reciprocally:</strong> After they answer, share your own thoughts on the topic. This creates a balanced exchange rather than a one-sided questioning session.
+                    </p>
+                    <p>
+                        <strong>Follow the Energy:</strong> If they light up talking about something specific, dive deeper into that topic. Their enthusiasm will guide you to what matters most to them.
+                    </p>
+                </div>
+
+                <h2>Reading the Room: Do's and Don'ts</h2>
+                <div class="dos-donts">
+                    <div class="dos">
+                        <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                        <ul>
+                            <li>Ask open-ended questions that encourage storytelling</li>
+                            <li>Show genuine curiosity about their experiences</li>
+                            <li>Share your own stories and experiences</li>
+                            <li>Pay attention to their body language and comfort level</li>
+                            <li>Ask follow-up questions to show you're listening</li>
+                            <li>Respect their boundaries if they seem uncomfortable</li>
+                        </ul>
+                    </div>
+                    <div class="donts">
+                        <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                        <ul>
+                            <li>Ask overly personal questions too early</li>
+                            <li>Dominate the conversation with your own stories</li>
+                            <li>Bring up controversial topics on the first date</li>
+                            <li>Ask about past relationships or breakups</li>
+                            <li>Make it feel like a job interview</li>
+                            <li>Judge their answers or interrupt them</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>When Conversations Flow Naturally</h2>
+                <p>
+                    The best first date conversations happen when both people feel comfortable being themselves. Use these conversation starters as launching points, but don't feel pressured to stick to a script. If the conversation naturally flows to other topics, follow that path. The goal is to discover if you enjoy each other's company and share compatible values.
+                </p>
+
+                <div class="quote-box">
+                    A great conversation is like a dance – both partners need to be willing to lead and follow, creating something beautiful together.
+                </div>
+
+                <h2>Building on First Date Success</h2>
+                <p>
+                    If your first date conversation goes well, you'll know because time will seem to fly by, you'll find yourselves laughing together, and you'll both be eager to continue the conversation. These moments of connection are the foundation of lasting relationships.
+                </p>
+
+                <p>
+                    Remember, the goal isn't to impress them with perfect questions or witty responses. The goal is to be genuinely interested in getting to know them while allowing them to get to know the real you. Authenticity, curiosity, and kindness will always win over rehearsed charm.
+                </p>
+
+                <div class="hindi-text">
+                    "दिल की बात दिल से निकलती है, और दिल में उतरती है।" <br>
+                    Words from the heart emerge from the heart and enter the heart.
+                </div>
+
+                <h2>Final Thoughts</h2>
+                <p>
+                    Great conversations are the bridge between two hearts. Use these conversation starters as tools to build that bridge, but remember that the most important ingredient is your genuine interest in the person sitting across from you. Be curious, be kind, and be yourself. The right person will appreciate your authenticity and be eager to share their own stories with you.
+                </p>
+
+                <p>
+                    Your first date is just the beginning of potentially many conversations. Make it count by being present, asking thoughtful questions, and listening with an open heart. Good conversations lead to good connections, and good connections lead to beautiful relationships.
+                </p>
+            </div>
+
+            <!-- Article Footer -->
+            <div class="article-footer">
+                <div class="social-share">
+                    <a href="#" class="share-btn share-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn share-twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <a href="blog.html" class="back-to-blog">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog Page
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Header button functionality
+        document.querySelector('.back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Homepage';
+                console.log('Navigate to homepage');
+            }, 1000);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList.contains('share-facebook') ? 'Facebook' :
+                                this.classList.contains('share-twitter') ? 'Twitter' :
+                                this.classList.contains('share-whatsapp') ? 'WhatsApp' : 'LinkedIn';
+                
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log(`Share on ${platform}`);
+            });
+        });
+
+        // Back to blog functionality
+        document.querySelector('.back-to-blog').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Blog Page';
+                console.log('Navigate to blog page');
+            }, 1000);
+        });
+
+        // Smooth scrolling for conversation starters

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Love Before Soul-Love: Why It Matters - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--pure-white));
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .blog-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Article Container */
+        .article-container {
+            background: white;
+            border-radius: 25px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .article-category {
+            background: linear-gradient(135deg, var(--accent-gold), #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin: 2.5rem 0 1.5rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-pink);
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content .hindi-text {
+            font-style: italic;
+            color: var(--secondary-pink);
+            font-weight: 500;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .article-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .article-content li::marker {
+            color: var(--primary-pink);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💝';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            font-style: italic;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+            text-align: center;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-facebook { background: #3b5998; }
+        .share-twitter { background: #1da1f2; }
+        .share-whatsapp { background: #25d366; }
+        .share-linkedin { background: #0077b5; }
+
+        .back-to-blog {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .article-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="footer-logo">
+                        <span class="heart-emoji">💖</span>
+                        <span class="dilse">DilSe MATCHIFY</span>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header">
+                <span class="article-category">✨ Self-Love</span>
+                <h1 class="article-title">Self-Love Before Soul-Love: Why It Matters</h1>
+                <p class="article-subtitle">
+                    Understanding the importance of loving yourself first before seeking love from others. A journey of self-discovery that leads to deeper, more meaningful relationships.
+                </p>
+                <div class="hindi-text">
+                    अपने आप से प्यार करना सीखें, बाकी सब अपने आप हो जाएगा।
+                </div>
+                <div class="article-meta">
+                    <div class="author-info">
+                        <div class="author-avatar">MS</div>
+                        <div class="author-details">
+                            <h4>Meera Singh</h4>
+                            <span>Life Coach & Wellness Expert</span>
+                        </div>
+                    </div>
+                    <div class="article-date">
+                        <i class="fas fa-calendar-alt"></i> December 3, 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <p>
+                    In our quest for love and companionship, we often forget the most important relationship of all – the one we have with ourselves. Before we can truly love another person or invite them into our lives, we must first cultivate a deep, nurturing relationship with ourselves. This isn't selfish; it's essential.
+                </p>
+
+                <h2>The Foundation of All Relationships</h2>
+                <p>
+                    Self-love isn't about being narcissistic or self-absorbed. It's about understanding your worth, accepting your flaws, and nurturing your growth. When you love yourself, you set the standard for how others should treat you. You become a magnet for healthy relationships because you know what you deserve.
+                </p>
+
+                <div class="quote-box">
+                    You cannot pour from an empty cup. Fill yourself with love, kindness, and compassion, and watch how it transforms every relationship in your life.
+                </div>
+
+                <h2>Why Self-Love Comes First</h2>
+                <p>
+                    When you don't love yourself, you tend to seek validation from others. This creates unhealthy relationship patterns where you might compromise your values, ignore red flags, or stay in situations that don't serve you. Self-love gives you the confidence to choose partners who truly complement your life.
+                </p>
+
+                <h3>Signs You Need to Focus on Self-Love</h3>
+                <ul>
+                    <li><strong>Seeking constant validation:</strong> You need others to tell you you're worthy or beautiful</li>
+                    <li><strong>Fear of being alone:</strong> You'd rather be in a bad relationship than no relationship</li>
+                    <li><strong>Neglecting your needs:</strong> You always put others first, even at your own expense</li>
+                    <li><strong>Negative self-talk:</strong> Your inner voice is critical and harsh</li>
+                    <li><strong>Comparing yourself to others:</strong> You constantly measure your worth against others</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "जो व्यक्ति खुद से प्यार करता है, वह दुनिया को भी प्यार करना सिखाता है।"<br>
+                    The person who loves themselves teaches the world how to love too.
+                </div>
+
+                <h2>The Journey to Self-Love</h2>
+                <p>
+                    Self-love is not a destination but a continuous journey. It requires patience, practice, and a lot of self-compassion. Here's how you can begin this beautiful journey:
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Daily Self-Love Practices:</h3>
+                    <p>
+                        <strong>Morning Affirmations:</strong> Start each day by telling yourself three things you appreciate about yourself. It could be your kindness, your determination, or simply your ability to try again.
+                    </p>
+                    <p>
+                        <strong>Boundary Setting:</strong> Learn to say no to things that drain your energy. Your time and energy are precious resources that deserve protection.
+                    </p>
+                    <p>
+                        <strong>Self-Care Rituals:</strong> Whether it's a warm bath, reading a book, or taking a walk, make time for activities that nourish your soul.
+                    </p>
+                </div>
+
+                <h2>Self-Love in Indian Culture</h2>
+                <p>
+                    In Indian philosophy, the concept of self-love is deeply rooted in ancient wisdom. The Sanskrit phrase "Aham Brahmasmi" (I am the universe) teaches us that we are inherently divine and worthy of love. This doesn't mean we're perfect, but it means we're complete as we are.
+                </p>
+
+                <h3>Embracing Your Authentic Self</h3>
+                <ul>
+                    <li><strong>Accept your heritage:</strong> Celebrate your cultural background and traditions</li>
+                    <li><strong>Honor your dreams:</strong> Your aspirations are valid, regardless of what others think</li>
+                    <li><strong>Embrace your uniqueness:</strong> What makes you different makes you special</li>
+                    <li><strong>Forgive your mistakes:</strong> Growth comes from learning, not perfection</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "खुद को समझना ही सबसे बड़ी विद्या है।"<br>
+                    Understanding yourself is the greatest wisdom.
+                </div>
+
+                <h2>How Self-Love Transforms Your Relationships</h2>
+                <p>
+                    When you love yourself, you attract partners who also love themselves. You create relationships based on mutual respect, shared growth, and genuine affection rather than neediness or fear. You become someone who adds value to others' lives rather than someone who needs to be completed by them.
+                </p>
+
+                <div class="quote-box">
+                    Two whole people create a whole relationship. Two half people create a half relationship. Work on becoming whole.
+                </div>
+
+                <h2>Practical Steps to Cultivate Self-Love</h2>
+                <p>
+                    Self-love isn't just a feeling; it's a practice. Here are concrete steps you can take today to begin loving yourself more deeply:
+                </p>
+
+                <h3>Daily Actions for Self-Love</h3>
+                <ul>
+                    <li><strong>Practice gratitude:</strong> Write down three things you're grateful for about yourself each day</li>
+                    <li><strong>Treat yourself kindly:</strong> Speak to yourself as you would to a dear friend</li>
+                    <li><strong>Pursue your interests:</strong> Engage in activities that bring you joy and fulfillment</li>
+                    <li><strong>Set healthy boundaries:</strong> Learn to protect your time, energy, and emotional well-being</li>
+                    <li><strong>Celebrate small wins:</strong> Acknowledge your progress, no matter how small</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Remember:</h3>
+                    <p>
+                        Self-love is not selfish. It's necessary. When you love yourself, you become capable of loving others more fully and authentically. You stop looking for someone to complete you and start looking for someone to complement you.
+                    </p>
+                </div>
+
+                <h2>The Ripple Effect of Self-Love</h2>
+                <p>
+                    When you practice self-love, it creates a positive ripple effect in all areas of your life. Your relationships become healthier, your career flourishes because you value yourself, and you attract opportunities that align with your worth. Most importantly, you become an inspiration to others to love themselves too.
+                </p>
+
+                <div class="hindi-text">
+                    "आत्म-प्रेम ही सच्चे प्रेम की शुरुआत है।"<br>
+                    Self-love is the beginning of true love.
+                </div>
+
+                <h2>Conclusion: Your Love Story Begins with You</h2>
+                <p>
+                    The most beautiful love story you'll ever experience is the one you write with yourself. When you learn to love, accept, and cherish yourself, you create space for others to do the same. You become the love you seek, and in doing so, you attract the love you deserve.
+                </p>
+
+                <p>
+                    Remember, self-love is not a luxury; it's a necessity. It's the foundation upon which all other love is built. So take time today to look in the mirror and say, "I love you" to the person staring back. Mean it. Feel it. Live it.
+                </p>
+
+                <div class="quote-box">
+                    Your relationship with yourself sets the tone for every other relationship in your life. Make it a beautiful one.
+                </div>
+            </div>
+
+            <!-- Article Footer -->
+            <div class="article-footer">
+                <div class="social-share">
+                    <a href="#" class="share-btn share-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn share-twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <a href="blog.html" class="back-to-blog">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog Page
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Header button functionality
+        document.querySelector('.back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Homepage';
+                console.log('Navigate to homepage');
+            }, 1000);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList.contains('share-facebook') ? 'Facebook' :
+                                this.classList.contains('share-twitter') ? 'Twitter' :
+                                this.classList.contains('share-whatsapp') ? 'WhatsApp' : 'LinkedIn';
+                
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log(`Share on ${platform}`);
+            });
+        });
+
+        // Back to blog functionality
+        document.querySelector('.back-to-blog').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Blog Page';
+                console.log('Navigate to blog');
+            }, 1000);
+        });
+
+        // Smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add reading progress indicator
+        window.addEventListener('scroll', function() {
+            const article = document.querySelector('.article-content');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            // You can use this to show reading progress if needed
+            console.log(`Reading progress: ${Math.round(scrollPercent)}%`);
+        });
+    </script>
+</body>
+</html>

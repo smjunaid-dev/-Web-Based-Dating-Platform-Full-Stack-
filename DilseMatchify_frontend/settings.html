@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Dilse Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+            --success-green: #00B894;
+            --warning-orange: #FDCB6E;
+            --danger-red: #E17055;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            min-height: 100vh;
+            padding: 1rem;
+            color: var(--dark-charcoal);
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            max-width: 900px;
+            margin: 0 auto 1rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Kalam', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand:hover {
+            color: var(--secondary-pink);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn-home {
+            background: linear-gradient(135deg, var(--success-green), #00A085);
+            color: white;
+        }
+
+        .nav-btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 184, 148, 0.3);
+        }
+
+        .nav-btn-logout {
+            background: linear-gradient(135deg, var(--danger-red), #D63031);
+            color: white;
+        }
+
+        .nav-btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(225, 112, 85, 0.3);
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--pure-white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--pure-white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-pink));
+        }
+
+        .header h1 {
+            font-family: 'Kalam', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .settings-content {
+            padding: 2rem;
+        }
+
+        .settings-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--pure-white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+            border-left: 4px solid var(--primary-pink);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .settings-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        .settings-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark-charcoal);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pure-white);
+            font-size: 0.9rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: var(--background-light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .setting-item:hover {
+            background: rgba(233, 30, 99, 0.05);
+            border-color: var(--primary-pink);
+            transform: scale(1.02);
+        }
+
+        .setting-label {
+            font-weight: 500;
+            color: var(--dark-charcoal);
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .setting-description {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle-switch.active {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(30px);
+        }
+
+        .dropdown {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--background-light);
+            border-radius: 15px;
+            background: var(--pure-white);
+            font-size: 1rem;
+            min-width: 150px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-charcoal);
+        }
+
+        .dropdown:hover, .dropdown:focus {
+            border-color: var(--primary-pink);
+            outline: none;
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.1);
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--pure-white);
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--success-green), #00A085);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 25px rgba(0, 184, 148, 0.4);
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-header {
+                margin: 0 0.5rem 1rem;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .container {
+                margin: 0 0.5rem;
+                border-radius: 20px;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .settings-content {
+                padding: 1.5rem;
+            }
+
+            .settings-section {
+                padding: 1.5rem;
+            }
+            
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .btn-home-large {
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .btn-home-large span {
+                display: block;
+                margin: 0 0.5rem;
+            }
+        }
+
+        /* Animation for page load */
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            background: linear-gradient(135deg, var(--success-green), #00A085);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Prominent Home Navigation */
+        .home-navigation {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .btn-home-large {
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--success-green), #00A085);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .btn-home-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-home-large:hover::before {
+            left: 100%;
+        }
+
+        .btn-home-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 184, 148, 0.5);
+        }
+
+        .btn-home-large i:first-child {
+            animation: bounceLeft 2s infinite;
+        }
+
+        .btn-home-large i:last-child {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes bounceLeft {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(-5px);
+            }
+            60% {
+                transform: translateX(-3px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Logout confirmation modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-charcoal);
+        }
+
+        .modal-text {
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .modal-btn-cancel {
+            background: var(--background-light);
+            color: var(--dark-charcoal);
+        }
+
+        .modal-btn-cancel:hover {
+            background: var(--light-gray);
+        }
+
+        .modal-btn-confirm {
+            background: linear-gradient(135deg, var(--danger-red), #D63031);
+            color: white;
+        }
+
+        .modal-btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(225, 112, 85, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+
+
+    <!-- Main Content -->
+    <div class="container fade-in-up">
+        <div class="header">
+            <h1>⚙️ Settings</h1>
+            <p>Customize your perfect match experience</p>
+        </div>
+
+        <div class="settings-content">
+            <!-- Prominent Back to Home Button -->
+            
+
+            <div id="successMessage" class="success-message">
+                <i class="fas fa-check-circle"></i> Settings saved successfully!
+            </div>
+
+            <!-- Profile Settings -->
+            <div class="settings-section">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    Profile Settings
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Show me on Dilse Matchify</div>
+                        <div class="setting-description">Control your profile visibility to other users</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Show distance on profile</div>
+                        <div class="setting-description">Display distance to potential matches</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Show age on profile</div>
+                        <div class="setting-description">Display your age publicly on your profile</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Recently Active Status</div>
+                        <div class="setting-description">Show when you were last active on the platform</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+            </div>
+
+            <!-- Discovery Settings -->
+            <div class="settings-section">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    Discovery Settings
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Show me</div>
+                        <div class="setting-description">Select your preferred gender for matches</div>
+                    </div>
+                    <select class="dropdown">
+                        <option>Everyone</option>
+                        <option>Men</option>
+                        <option>Women</option>
+                        <option>Non-binary</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Global Mode</div>
+                        <div class="setting-description">Discover people from around the world</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    Notifications
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">New Matches</div>
+                        <div class="setting-description">Get notified when you receive new matches</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Messages</div>
+                        <div class="setting-description">Receive notifications for new messages</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Super Likes</div>
+                        <div class="setting-description">Get alerted when someone Super Likes you</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Email Notifications</div>
+                        <div class="setting-description">Receive important updates via email</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="settings-section">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    Privacy & Safety
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Only show me to people I've liked</div>
+                        <div class="setting-description">Increase privacy by limiting your profile visibility</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Block contacts</div>
+                        <div class="setting-description">Don't show people from your phone contacts</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Read receipts</div>
+                        <div class="setting-description">Let matches know when you've read their messages</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Incognito Mode</div>
+                        <div class="setting-description">Browse profiles without being seen</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="settings-section">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    Account Settings
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Language</div>
+                        <div class="setting-description">Choose your preferred language</div>
+                    </div>
+                    <select class="dropdown">
+                        <option>English</option>
+                        <option>हिंदी (Hindi)</option>
+                        <option>தமிழ் (Tamil)</option>
+                        <option>తెలుగు (Telugu)</option>
+                        <option>বাংলা (Bengali)</option>
+                        <option>ગુજરાતી (Gujarati)</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Two-Factor Authentication</div>
+                        <div class="setting-description">Add extra security to your account</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-label">Data Usage</div>
+                        <div class="setting-description">Optimize app performance for your connection</div>
+                    </div>
+                    <select class="dropdown">
+                        <option>Auto</option>
+                        <option>High Quality</option>
+                        <option>Data Saver</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn btn-secondary" onclick="saveSettings()">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <button class="btn" onclick="resetSettings()">
+                    <i class="fas fa-undo"></i> Reset to Default
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">
+                <i class="fas fa-sign-out-alt"></i>
+                Confirm Logout
+            </div>
+            <div class="modal-text">
+                Are you sure you want to logout? You'll need to sign in again to access your account.
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeLogoutModal()">
+                    Cancel
+                </button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmLogout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+        }
+
+        function saveSettings() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to default? This will undo all your customizations.')) {
+                // Reset all toggles to default state
+                document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                    toggle.classList.remove('active');
+                });
+                
+                // Reset specific default toggles
+                const defaultToggles = document.querySelectorAll('.settings-section:nth-child(2) .toggle-switch');
+                defaultToggles.forEach(toggle => toggle.classList.add('active'));
+                
+                // Reset dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.selectedIndex = 0;
+                });
+                
+                alert('Settings have been reset to default values.');
+            }
+        }
+
+        function goToHome() {
+            // Replace with actual navigation logic
+            alert('Navigating to home page...');
+            // window.location.href = '/home';
+        }
+
+        function showLogoutModal() {
+            document.getElementById('logoutModal').style.display = 'block';
+        }
+
+        function closeLogoutModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+
+        function confirmLogout() {
+            // Replace with actual logout logic
+            alert('Logging out...');
+            closeLogoutModal();
+            // Actual logout implementation:
+            // window.location.href = '/login';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('logoutModal');
+            if (event.target === modal) {
+                closeLogoutModal();
+            }
+        }
+    </script>
+</body>
+</html>

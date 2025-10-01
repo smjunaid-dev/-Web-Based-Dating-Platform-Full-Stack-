@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dating vs Traditional Values: Finding Balance - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--pure-white));
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .blog-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .heart-emoji {
+            font-size: 1.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Article Container */
+        .article-container {
+            background: white;
+            border-radius: 25px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .article-category {
+            background: linear-gradient(135deg, var(--accent-gold), #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin: 2.5rem 0 1.5rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-pink);
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content .hindi-text {
+            font-style: italic;
+            color: var(--secondary-pink);
+            font-weight: 500;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .balance-point {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .balance-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
+        }
+
+        .balance-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .balance-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .balance-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            font-style: italic;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .modern-traditional {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .modern, .traditional {
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .modern {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.05), rgba(100, 181, 246, 0.05));
+            border-left: 5px solid #2196F3;
+        }
+
+        .traditional {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.05), rgba(255, 183, 77, 0.05));
+            border-left: 5px solid #FF9800;
+        }
+
+        .modern h3, .traditional h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .modern h3 {
+            color: #2196F3;
+        }
+
+        .traditional h3 {
+            color: #FF9800;
+        }
+
+        .modern ul, .traditional ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modern li, .traditional li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .modern li::before {
+            content: '🌟';
+            position: absolute;
+            left: 0;
+        }
+
+        .traditional li::before {
+            content: '🏛️';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+            text-align: center;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-facebook { background: #3b5998; }
+        .share-twitter { background: #1da1f2; }
+        .share-whatsapp { background: #25d366; }
+        .share-linkedin { background: #0077b5; }
+
+        .back-to-blog {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .article-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+            }
+
+            .modern-traditional {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="heart-emoji">💖</span>
+                    <span class="dilse">DilSe MATCHIFY</span>
+                </a>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header">
+                <span class="article-category">🕉️ Indian Culture</span>
+                <h1 class="article-title">Modern Dating vs Traditional Values: Finding Balance</h1>
+                <p class="article-subtitle">
+                    Navigate the beautiful blend of contemporary dating culture while honoring traditional Indian values and family expectations in your relationship journey.
+                </p>
+                <div class="hindi-text">
+                    संस्कार और आधुनिकता का सुंदर मेल ही सच्चे प्रेम की नींव है।
+                </div>
+                <div class="article-meta">
+                    <div class="author-info">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-details">
+                            <h4>Sneha Kapoor</h4>
+                            <span>Cultural Relationship Expert</span>
+                        </div>
+                    </div>
+                    <div class="article-date">
+                        <i class="fas fa-calendar-alt"></i> December 8, 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <p>
+                    In today's India, young adults find themselves at the intersection of two worlds - the rich tapestry of traditional values passed down through generations and the evolving landscape of modern dating culture. This beautiful yet complex dance between tradition and modernity creates both opportunities and challenges for those seeking meaningful relationships.
+                </p>
+
+                <div class="quote-box">
+                    The art of finding love in modern India lies not in choosing between tradition and progress, but in weaving them together to create something uniquely beautiful.
+                </div>
+
+                <h2>Understanding Both Worlds</h2>
+                <p>
+                    Traditional Indian values emphasize family involvement, respect for elders, cultural practices, and long-term commitment. These values have successfully united families for centuries and continue to provide a strong foundation for relationships. On the other hand, modern dating culture brings individual choice, personal compatibility, and the freedom to explore relationships at one's own pace.
+                </p>
+
+                <div class="hindi-text">
+                    "पुराने और नए का मेल ही जीवन की सबसे सुंदर कहानी बनाता है।" - The blend of old and new creates life's most beautiful story.
+                </div>
+
+                <h2>Key Areas of Balance</h2>
+
+                <div class="balance-point">
+                    <div class="balance-number">1</div>
+                    <div class="balance-title">Family Involvement vs Personal Choice</div>
+                    <div class="balance-description">
+                        Find ways to include family in your relationship journey while maintaining your autonomy in decision-making. Share your dating experiences with trusted family members and seek their guidance without compromising your personal preferences.
+                    </div>
+                </div>
+
+                <div class="balance-point">
+                    <div class="balance-number">2</div>
+                    <div class="balance-title">Cultural Traditions vs Modern Expressions</div>
+                    <div class="balance-description">
+                        Celebrate festivals and cultural practices together while embracing modern ways of expressing love. This could mean exchanging gifts on both Valentine's Day and Karva Chauth, or planning dates that honor both contemporary and traditional interests.
+                    </div>
+                </div>
+
+                <div class="balance-point">
+                    <div class="balance-number">3</div>
+                    <div class="balance-title">Courtship Timeline vs Modern Dating</div>
+                    <div class="balance-description">
+                        Respect traditional courtship values while allowing relationships to develop naturally. This means being intentional about your dating goals while not rushing into commitment or physical intimacy before you're ready.
+                    </div>
+                </div>
+
+                <div class="balance-point">
+                    <div class="balance-number">4</div>
+                    <div class="balance-title">Community Values vs Individual Growth</div>
+                    <div class="balance-description">
+                        Honor the collective wisdom of your community while pursuing personal development. Seek partners who support both your individual aspirations and your connection to cultural roots.
+                    </div>
+                </div>
+
+                <div class="balance-point">
+                    <div class="balance-number">5</div>
+                    <div class="balance-title">Arranged Introductions vs Love Marriage</div>
+                    <div class="balance-description">
+                        Consider family introductions as one avenue for meeting potential partners while remaining open to organic connections. Many successful relationships today blend both approaches - meeting through family networks and then dating to build compatibility.
+                    </div>
+                </div>
+
+                <div class="hindi-text">
+                    "सच्चा प्रेम वही है जो परंपरा का सम्मान करे और आधुनिकता को अपनाए।" - True love is that which respects tradition and embraces modernity.
+                </div>
+
+                <h2>Practical Strategies for Balance</h2>
+
+                <div class="highlight-box">
+                    <h3>Communication is Key:</h3>
+                    <p>
+                        <strong>With Family:</strong> Have open conversations about your dating approach, relationship goals, and the kind of partner you're seeking. This builds trust and understanding.
+                    </p>
+                    <p>
+                        <strong>With Partners:</strong> Discuss your cultural values early in the relationship. Share what traditions mean to you and understand their perspective on balancing modern and traditional approaches.
+                    </p>
+                    <p>
+                        <strong>With Yourself:</strong> Regularly reflect on what truly matters to you - which traditions you want to maintain and which modern approaches feel right for your life.
+                    </p>
+                </div>
+
+                <h2>Modern vs Traditional: Finding Common Ground</h2>
+                <div class="modern-traditional">
+                    <div class="modern">
+                        <h3><i class="fas fa-mobile-alt"></i> Modern Approaches</h3>
+                        <ul>
+                            <li>Dating apps and online platforms for meeting people</li>
+                            <li>Taking time to know someone before commitment</li>
+                            <li>Sharing household responsibilities equally</li>
+                            <li>Pursuing individual career goals alongside relationship</li>
+                            <li>Open communication about expectations and boundaries</li>
+                            <li>Celebrating love in contemporary ways</li>
+                        </ul>
+                    </div>
+                    <div class="traditional">
+                        <h3><i class="fas fa-home"></i> Traditional Values</h3>
+                        <ul>
+                            <li>Respect for elders and family involvement</li>
+                            <li>Cultural and religious practices in relationships</li>
+                            <li>Long-term commitment and marriage as the goal</li>
+                            <li>Community support and collective decision-making</li>
+                            <li>Preserving cultural heritage and passing it on</li>
+                            <li>Emphasis on family bonds and joint celebrations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Creating Your Unique Path</h2>
+                <p>
+                    The beauty of modern Indian relationships lies in their diversity. Some couples may choose to have a traditional arranged marriage with a modern courtship period. Others might meet through dating apps but incorporate traditional ceremonies and family involvement. The key is to create a path that feels authentic to both partners and respects the values that matter most to you.
+                </p>
+
+                <div class="quote-box">
+                    Your love story doesn't have to choose between being traditional or modern - it can be beautifully both, creating a new chapter that honors the past while embracing the future.
+                </div>
+
+                <h2>Navigating Family Expectations</h2>
+                <p>
+                    Family expectations can feel overwhelming, but they often come from a place of love and concern. Start by understanding their perspective - they want to see you happy and settled. Share your approach to dating and relationships, explaining how you're incorporating both modern and traditional elements. Be patient with family members who may need time to understand your choices.
+                </p>
+
+                <p>
+                    Remember that you can honor family expectations while still making your own decisions. This might mean involving family in relationship milestones, seeking their blessings, or including them in wedding planning while maintaining your autonomy in choosing your life partner.
+                </p>
+
+                <div class="hindi-text">
+                    "परिवार का प्यार और व्यक्तिगत खुशी दोनों एक साथ संभव है।" - Family love and personal happiness are both possible together.
+                </div>
+
+                <h2>Building Understanding with Your Partner</h2>
+                <p>
+                    When dating someone, discuss your cultural background and what traditions mean to you. Be curious about their family customs and values too. This creates a foundation of mutual respect and understanding. Some couples find it helpful to experience each other's cultural celebrations, meet extended family members, and discuss how they want to blend their traditions.
+                </p>
+
+                <p>
+                    If you're from different cultural backgrounds, this conversation becomes even more important. Focus on shared values like respect, commitment, and family bonds rather than getting caught up in specific practices. Many beautiful relationships have emerged from couples who successfully blend different cultural traditions.
+                </p>
+
+                <h2>The Role of Technology and Modern Tools</h2>
+                <p>
+                    Dating apps and social media have become part of the modern relationship landscape in India. Rather than viewing these as replacements for traditional matchmaking, consider them as additional tools for meeting compatible partners. Many families now use matrimonial websites alongside traditional matchmaking methods.
+                </p>
+
+                <p>
+                    The key is to use technology mindfully - be clear about your intentions, honest about your background and values, and use these platforms to find people who share your vision of balancing tradition and modernity in relationships.
+                </p>
+
+                <h2>Celebrating Love in Both Worlds</h2>
+                <p>
+                    Modern Indian couples have the unique opportunity to celebrate love in multiple ways. You might exchange Valentine's Day gifts and also perform traditional ceremonies like Karva Chauth. You could plan contemporary date nights while also participating in family pujas and celebrations. This rich tapestry of experiences can strengthen your bond and create lasting memories.
+                </p>
+
+                <div class="hindi-text">
+                    "प्रेम का जश्न हर रूप में खुशी लाता है।" - Celebrating love in every form brings joy.
+                </div>
+
+                <h2>Final Thoughts</h2>
+                <p>
+                    Finding balance between modern dating and traditional values isn't about perfection - it's about authenticity. Stay true to your core values while remaining open to growth and change. The right partner will appreciate and support your journey of honoring tradition while embracing modernity.
+                </p>
+
+                <p>
+                    Remember that every relationship is unique, and what works for others may not work for you. Trust your instincts, communicate openly with both family and partners, and don't be afraid to create your own beautiful blend of tradition and modernity. Your love story can be both deeply rooted in culture and thoroughly modern - that's the beauty of love in contemporary India.
+                </p>
+            </div>
+
+            <!-- Article Footer -->
+            <div class="article-footer">
+                <div class="social-share">
+                    <a href="#" class="share-btn share-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn share-twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <a href="blog.html" class="back-to-blog">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog Page
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Header button functionality
+        document.querySelector('.back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Homepage';
+                console.log('Navigate to homepage');
+            }, 1000);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList.contains('share-facebook') ? 'Facebook' :
+                                this.classList.contains('share-twitter') ? 'Twitter' :
+                                this.classList.contains('share-whatsapp') ? 'WhatsApp' : 'LinkedIn';
+                
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log(`Share on ${platform}`);
+            });
+        });
+
+        // Back to blog functionality
+        document.querySelector('.back-to-blog').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Blog Page';
+                console.log('Navigate to blog page');
+            }, 1000);
+        });
+
+        // Smooth hover effects for balance points
+        document.querySelectorAll('.balance-point').forEach(point => {
+            point.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            point.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

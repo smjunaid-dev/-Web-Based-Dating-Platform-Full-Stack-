@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match-a-Mate - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E91E63;
+            --secondary: #C44569;
+            --accent: #F8B500;
+            --dark: #2D3436;
+            --text: #757575;
+            --light-text: #B0B0B0;
+            --background: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background), #ffffff);
+            min-height: 100vh;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(233, 30, 99, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-title i {
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 0.8rem 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            min-width: 120px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.1);
+        }
+
+        /* Profiles Grid */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+        }
+
+        .profile-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-info {
+            padding: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-details {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(233, 30, 99, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pass-btn {
+            background: #ff4757;
+            color: white;
+        }
+
+        .pass-btn:hover {
+            background: #ff3742;
+            transform: scale(1.1);
+        }
+
+        .like-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .like-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .super-like-btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        .super-like-btn:hover {
+            background: #e6a200;
+            transform: scale(1.1);
+        }
+
+        /* Animation for swipe effect */
+        .profile-card.swiped-left {
+            animation: swipeLeft 0.5s ease-out forwards;
+        }
+
+        .profile-card.swiped-right {
+            animation: swipeRight 0.5s ease-out forwards;
+        }
+
+        @keyframes swipeLeft {
+            to {
+                transform: translateX(-100%) rotate(-30deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes swipeRight {
+            to {
+                transform: translateX(100%) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Match popup */
+        .match-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .match-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .match-content h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .match-content p {
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profiles-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin: 2rem auto 0;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-item {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-actions {
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <i class="fas fa-heart"></i>
+                    DilSe Matchify
+                </div>
+                <div class="nav-actions">
+                    
+                    <a href="homepage.html" class="nav-btn btn-primary">
+                        <i class="fas fa-user"></i> Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header fade-in">
+                <h1 class="page-title">
+                    <i class="fas fa-heart"></i>
+                    Match-a-Mate
+                </h1>
+                <p class="page-subtitle">
+                    Discover your perfect match! Swipe through profiles and find your soulmate.
+                </p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar fade-in">
+                <div class="filter-item">
+                    <label class="filter-label">Age Range</label>
+                    <select class="filter-select" id="ageFilter">
+                        <option value="">All Ages</option>
+                        <option value="20-25">20-25 years</option>
+                        <option value="26-30">26-30 years</option>
+                        <option value="31-35">31-35 years</option>
+                        <option value="36-40">36+ years</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">Location</label>
+                    <select class="filter-select" id="locationFilter">
+                        <option value="">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="chennai">Chennai</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">Profession</label>
+                    <select class="filter-select" id="professionFilter">
+                        <option value="">All Professions</option>
+                        <option value="engineer">Engineer</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="business">Business</option>
+                        <option value="artist">Artist</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Profiles Grid -->
+            <div class="profiles-grid" id="profilesGrid">
+                <!-- Profile cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Match Popup -->
+    <div class="match-popup" id="matchPopup">
+        <div class="match-content">
+            <h2><i class="fas fa-heart"></i> It's a Match!</h2>
+            <p>Congratulations! You both liked each other. Start your conversation now!</p>
+            <button class="nav-btn btn-primary" onclick="closeMatchPopup()">
+                <i class="fas fa-comments"></i> Start Chatting
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Sample profiles data
+        const profiles = [
+            {
+                id: 1,
+                name: "Priya Sharma",
+                age: 25,
+                city: "Mumbai",
+                profession: "Software Engineer",
+                interests: ["Travel", "Reading", "Yoga"],
+                image: "fas fa-user"
+            },
+            {
+                id: 2,
+                name: "Kavya Reddy",
+                age: 27,
+                city: "Bangalore",
+                profession: "Doctor",
+                interests: ["Music", "Dancing", "Cooking"],
+                image: "fas fa-user"
+            },
+            {
+                
+                id: 3,
+                name: "Anita Patel",
+                age: 24,
+                city: "Bangalore",
+                profession: "Teacher",
+                interests: ["Art", "Hiking", "Photography"],
+                image: "fas fa-user"
+            },
+            
+            {
+                id: 4,
+                name: "Sneha Gupta",
+                age: 26,
+                city: "Delhi",
+                profession: "Marketing Manager",
+                interests: ["Fashion", "Travel", "Food"],
+                image: "fas fa-user"
+            },
+            {
+                id: 5,
+                name: "Riya Singh",
+                age: 23,
+                city: "Hyderabad",
+                profession: "Graphic Designer",
+                interests: ["Design", "Movies", "Music"],
+                image: "fas fa-user"
+            },
+            {
+                id: 6,
+                name: "Meera Joshi",
+                age: 29,
+                city: "Chennai",
+                profession: "Business Analyst",
+                interests: ["Books", "Fitness", "Meditation"],
+                image: "fas fa-user"
+            }
+        ];
+
+        let currentProfiles = [...profiles];
+
+        // Function to render profiles
+        function renderProfiles(profilesToRender = currentProfiles) {
+            const grid = document.getElementById('profilesGrid');
+            grid.innerHTML = '';
+
+            profilesToRender.forEach((profile, index) => {
+                const profileCard = document.createElement('div');
+                profileCard.className = 'profile-card fade-in';
+                profileCard.style.animationDelay = `${index * 0.1}s`;
+
+                profileCard.innerHTML = `
+                    <div class="profile-image">
+                        <i class="${profile.image}"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="profile-name">${profile.name}</h3>
+                        <div class="profile-details">
+                            ${profile.age} years • ${profile.city} • ${profile.profession}
+                        </div>
+                        <div class="profile-tags">
+                            ${profile.interests.map(interest => `<span class="tag">${interest}</span>`).join('')}
+                        </div>
+                        <div class="profile-actions">
+                            <button class="action-btn pass-btn" onclick="swipeProfile(${profile.id}, 'pass')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="action-btn super-like-btn" onclick="swipeProfile(${profile.id}, 'superlike')">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <button class="action-btn like-btn" onclick="swipeProfile(${profile.id}, 'like')">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(profileCard);
+            });
+        }
+
+        // Function to handle swiping
+        function swipeProfile(profileId, action) {
+            const profileCard = document.querySelector(`[onclick*="${profileId}"]`).closest('.profile-card');
+            
+            if (action === 'like' || action === 'superlike') {
+                profileCard.classList.add('swiped-right');
+                // 30% chance of a match for demo purposes
+                if (Math.random() < 0.3) {
+                    setTimeout(() => {
+                        showMatchPopup();
+                    }, 500);
+                }
+            } else {
+                profileCard.classList.add('swiped-left');
+            }
+
+            // Remove profile after animation
+            setTimeout(() => {
+                profileCard.style.display = 'none';
+            }, 500);
+        }
+
+        // Function to show match popup
+        function showMatchPopup() {
+            document.getElementById('matchPopup').style.display = 'flex';
+        }
+
+        // Function to close match popup
+        function closeMatchPopup() {
+            document.getElementById('matchPopup').style.display = 'none';
+        }
+
+        // Filter functionality
+        function filterProfiles() {
+            const ageFilter = document.getElementById('ageFilter').value;
+            const locationFilter = document.getElementById('locationFilter').value;
+            const professionFilter = document.getElementById('professionFilter').value;
+
+            let filtered = profiles.filter(profile => {
+                let matchesAge = true;
+                let matchesLocation = true;
+                let matchesProfession = true;
+
+                if (ageFilter) {
+                    const [minAge, maxAge] = ageFilter.split('-').map(Number);
+                    matchesAge = profile.age >= minAge && (maxAge ? profile.age <= maxAge : true);
+                }
+
+                if (locationFilter) {
+                    matchesLocation = profile.city.toLowerCase().includes(locationFilter);
+                }
+
+                if (professionFilter) {
+                    matchesProfession = profile.profession.toLowerCase().includes(professionFilter);
+                }
+
+                return matchesAge && matchesLocation && matchesProfession;
+            });
+
+            renderProfiles(filtered);
+        }
+
+        // Add event listeners for filters
+        document.getElementById('ageFilter').addEventListener('change', filterProfiles);
+        document.getElementById('locationFilter').addEventListener('change', filterProfiles);
+        document.getElementById('professionFilter').addEventListener('change', filterProfiles);
+
+        // Add keyboard support for swiping
+        document.addEventListener('keydown', function(e) {
+            const firstProfile = document.querySelector('.profile-card:not([style*="display: none"])');
+            if (!firstProfile) return;
+
+            const profileId = parseInt(firstProfile.querySelector('[onclick]').getAttribute('onclick').match(/\d+/)[0]);
+
+            if (e.key === 'ArrowLeft') {
+                swipeProfile(profileId, 'pass');
+            } else if (e.key === 'ArrowRight') {
+                swipeProfile(profileId, 'like');
+            } else if (e.key === 'ArrowUp') {
+                swipeProfile(profileId, 'superlike');
+            }
+        });
+
+        // Initialize the page
+        renderProfiles();
+
+        // Add touch support for mobile swiping
+        let startX = null;
+        let currentCard = null;
+
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.closest('.profile-card')) {
+                currentCard = e.target.closest('.profile-card');
+                startX = e.touches[0].clientX;
+            }
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (!currentCard || !startX) return;
+
+            const currentX = e.touches[0].clientX;
+            const diffX = currentX - startX;
+
+            if (Math.abs(diffX) > 10) {
+                currentCard.style.transform = `translateX(${diffX}px) rotate(${diffX * 0.1}deg)`;
+                currentCard.style.opacity = 1 - Math.abs(diffX) / 300;
+            }
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (!currentCard || !startX) return;
+
+            const endX = e.changedTouches[0].clientX;
+            const diffX = endX - startX;
+
+            if (Math.abs(diffX) > 100) {
+                const profileId = parseInt(currentCard.querySelector('[onclick]').getAttribute('onclick').match(/\d+/)[0]);
+                if (diffX > 0) {
+                    swipeProfile(profileId, 'like');
+                } else {
+                    swipeProfile(profileId, 'pass');
+                }
+            } else {
+                currentCard.style.transform = '';
+                currentCard.style.opacity = '';
+            }
+
+            currentCard = null;
+            startX = null;
+        });
+    </script>
+</body>
+</html>

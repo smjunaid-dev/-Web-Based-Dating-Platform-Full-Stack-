@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DilSe Matchify - दिल से प्यार की शुरुआत</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #2D3436;
+      overflow-x: hidden;
+    }
+
+    .hindi-text {
+      font-family: 'Kalam', cursive;
+      color: #E91E63;
+      font-weight: 400;
+    }
+
+    /* Heart Popup Animation */
+    .heart-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #FF6B9D, #C44569, #F8B500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      animation: heartFade 3s ease-in-out forwards;
+    }
+
+    .heart-container {
+      text-align: center;
+      color: white;
+      animation: heartZoom 2s ease-out;
+    }
+
+    .heart-icon {
+      font-size: 8rem;
+      color: #FFE5EC;
+      animation: heartBeat 1.5s ease-in-out infinite;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+
+    .heart-text {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 2s ease-out;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .heart-subtext {
+      font-size: 1.4rem;
+      font-family: 'Kalam', cursive;
+      opacity: 0.9;
+      animation: fadeInUp 2.5s ease-out;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    @keyframes heartBeat {
+      0%, 50%, 100% { transform: scale(1); }
+      25%, 75% { transform: scale(1.15); }
+    }
+
+    @keyframes heartZoom {
+      0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+      50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes heartFade {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+      box-shadow: 0 2px 20px rgba(233, 30, 99, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 30px rgba(233, 30, 99, 0.15);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo .heart-emoji {
+      font-size: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .logo .dilse {
+      color: #E91E63;
+      font-family: 'Kalam', cursive;
+      font-size: 1.6rem;
+    }
+
+    .logo .matchify {
+      background: linear-gradient(135deg, #FF6B9D, #C44569);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2D3436;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.1), transparent);
+      transition: left 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+      left: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #E91E63;
+      transform: translateY(-2px);
+    }
+
+    .btn-signup {
+      background: linear-gradient(135deg, #E91E63, #AD1457);
+      color: white !important;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-signup::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.3s ease;
+    }
+
+    .btn-signup:hover::before {
+      left: 100%;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #E91E63;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(15px);
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-links a {
+      text-decoration: none;
+      color: #2D3436;
+      font-weight: 500;
+      padding: 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mobile-nav-links a:hover {
+      background: rgba(233, 30, 99, 0.1);
+      color: #E91E63;
+    }
+  </style>
+</head>
+<body>
+  <!-- Heart Popup Animation -->
+  <div class="heart-popup">
+    <div class="heart-container">
+      <div class="heart-icon">💖</div>
+      <div class="heart-text">DilSe Matchify</div>
+      <div class="heart-subtext hindi-text">दिल से प्यार की शुरुआत</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <nav class="navbar">
+      <div class="logo">
+        <span class="heart-emoji">💖</span>
+        <span class="dilse">DilSe</span>
+        <span class="matchify">MATCHIFY</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#features"><i class="fas fa-heart"></i> Features</a></li>
+        <li><a href="#how-it-works"><i class="fas fa-compass"></i> How It Works</a></li>
+        <li><a href="#testimonials"><i class="fas fa-star"></i> Success Stories</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+        <li><a class="btn-signup" href="loginpage.html">Get Started</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-nav-links">
+        <a href="#features"><i class="fas fa-heart"></i> Features</a>
+        <a href="#how-it-works"><i class="fas fa-compass"></i> How It Works</a>
+        <a href="#testimonials"><i class="fas fa-star"></i> Success Stories</a>
+        <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="#signup" class="btn-signup">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Part 1 ends here - Continue with Hero Section in Part 2 -->
+  
+  <script>
+    // Heart popup animation
+    window.addEventListener("load", () => {
+      const heartPopup = document.querySelector(".heart-popup");
+      setTimeout(() => {
+        if (heartPopup) heartPopup.style.display = "none";
+      }, 3000);
+    });
+
+    // Header scroll effect
+    window.addEventListener("scroll", () => {
+      const header = document.getElementById("header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      const icon = mobileMenuBtn.querySelector("i");
+      if (mobileMenu.classList.contains("active")) {
+        icon.className = "fas fa-times";
+      } else {
+        icon.className = "fas fa-bars";
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove("active");
+        mobileMenuBtn.querySelector("i").className = "fas fa-bars";
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- Part 2: Hero Section, Stats, Features, and How It Works -->
+<style>
+    /* Hero Section with Image Grid */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .hero-image {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: all 0.5s ease;
+      filter: brightness(0.8);
+    }
+
+    .hero-image:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+      z-index: 1;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(233, 30, 99, 0.7), rgba(196, 69, 105, 0.6));
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-image:hover::after {
+      opacity: 0.3;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 900px;
+      padding: 0 2rem;
+      animation: heroSlideUp 1s ease-out 3.5s both;
+    }
+
+    @keyframes heroSlideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, #FFE5EC, #FFFFFF, #FFE5EC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); }
+      to { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); }
+    }
+
+    .hero-content .hindi-tagline {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #FFE5EC;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-family: 'Kalam', cursive;
+      animation: fadeInDelay 1s ease-out 4s both;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      animation: fadeInDelay 1s ease-out 4.5s both;
+    }
+
+    .love-poem {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      color: #FFE5EC;
+      font-family: 'Kalam', cursive;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      line-height: 1.8;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeInDelay 1s ease-out 5s both;
+    }
+
+    @keyframes fadeInDelay {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInDelay 1s ease-out 5.5s both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #E91E63, #AD1457);
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border: none;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border: 2px solid white;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: white;
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-secondary:hover::before {
+      left: 0;
+    }
+
+    .btn-secondary:hover {
+      color: #E91E63;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Floating Elements */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .floating-heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.5rem;
+      animation: floatUp 6s infinite linear;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, #E91E63, #C44569, #F8B500);
+      color: white;
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-size="12">💖</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+      opacity: 0.1;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      padding: 0 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      position: relative;
+      padding: 2rem 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #FFFFFF, #FFE5EC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-item p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .stat-item .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #F8F9FA, #FFFFFF);
+      position: relative;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2D3436;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #757575;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(196, 69, 105, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.8rem;
+      color: white;
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2D3436;
+    }
+
+    .feature-card p {
+      color: #757575;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 6rem 0;
+      background: white;
+      position: relative;
+    }
+
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+      padding: 2rem 1rem;
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .step-card:hover .step-number {
+      transform: scale(1.1);
+    }
+
+    .step-number::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #E91E63, transparent);
+      z-index: -1;
+    }
+
+    .step-card:last-child .step-number::after {
+      display: none;
+    }
+
+    .step-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2D3436;
+    }
+
+    .step-card p {
+      color: #757575;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-background {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content .hindi-tagline {
+        font-size: 1.4rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .love-poem {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .steps-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .step-number::after {
+        display: none;
+      }
+    }
+</style>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background" id="heroBackground"></div>
+    <div class="hero-overlay"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="hero-content">
+      <h1>Find Your Perfect Match</h1>
+      <div class="hindi-tagline hindi-text">सच्चा प्यार यहाँ मिलता है</div>
+      <p>Join millions of people who found love through intelligent matching, verified profiles, and meaningful connections.</p>
+      <div class="love-poem">
+        "दिल की बात दिल से कहो,<br>
+        प्यार का इजहार यहाँ करो।<br>
+        Matchify पर मिले आपका साथी,<br>
+        जो समझे आपकी हर भावना।"
+      </div>
+      <div class="hero-buttons">
+        <a href="#signup" class="btn-primary">अपनी प्रेम कहानी शुरू करें</a>
+        <a href="signuppage.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="stat-icon">👥</span>
+        <h3 id="stat1">0</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">💕</span>
+        <h3 id="stat2">0</h3>
+        <p>Success Stories</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <h3 id="stat3">0</h3>
+        <p>Profile Verification</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">🔒</span>
+        <h3>24/7</h3>
+        <p>Support Available</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="section-container">
+      <h2 class="section-title">Why Choose Matchify?</h2>
+      <p class="section-subtitle">Experience the future of online dating with features designed for genuine connections and lasting relationships.</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Verified Profiles</h3>
+          <p>Every profile is manually verified with government ID and phone number to ensure authenticity and safety.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h3>AI-Powered Matching</h3>
+          <p>Our advanced algorithm learns your preferences and suggests compatible matches based on personality and interests.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-lock"></i></div>
+          <h3>Privacy First</h3>
+          <p>Your data is encrypted and secure. You control who sees your profile and can block or report anyone instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-comments"></i></div>
+          <h3>Smart Messaging</h3>
+          <p>Break the ice with conversation starters and enjoy features like video calls and voice messages.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Mobile Optimized</h3>
+          <p>Seamless experience across all devices with our responsive design and mobile-first approach.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>Our dedicated support team is always available to help you with any questions or concerns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="section-container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Finding your perfect match is just a few steps away. Here's how Matchify makes it simple and effective.</p>
+      
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Create Your Profile</h3>
+          <p>Sign up and create a detailed profile with photos and information about yourself, your interests, and what you're looking for.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Get Matched</h3>
+          <p>Our AI algorithm analyzes your profile and preferences to suggest compatible matches based on personality, interests, and location.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Start Connecting</h3>
+          <p>Like profiles that interest you, send messages, and use our conversation starters to break the ice and build meaningful connections.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Meet & Date</h3>
+          <p>When you're ready, arrange to meet in person. Use our safety features and tips to ensure secure and enjoyable first dates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+    // Hero background images setup
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroBackground = document.getElementById("heroBackground");
+      const images = [
+        "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1606888997400-5311f1baca1b?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1494790108755-2616c64e7d17?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1526510747491-58f928ec870f?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=300&fit=crop"
+      ];
+
+      images.forEach((src) => {
+        const imageDiv = document.createElement("div");
+        imageDiv.className = "hero-image";
+        imageDiv.style.backgroundImage = `url(${src})`;
+        heroBackground.appendChild(imageDiv);
+      });
+    });
+
+    // Animated counter for stats
+    function animateCounter(element, target, suffix = '') {
+      let current = 0;
+      const increment = target / 100;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + suffix;
+      }, 20);
+    }
+
+    // Stats animation on scroll
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(document.getElementById('stat1'), 2500000, '+');
+          animateCounter(document.getElementById('stat2'), 50000, '+');
+          animateCounter(document.getElementById('stat3'), 95, '%');
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const statsSection = document.querySelector('.stats-section');
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+    });
+
+    // Floating hearts animation
+    function createFloatingHeart() {
+      const heartsContainer = document.getElementById('floatingHearts');
+      if (!heartsContainer) return;
+      
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerHTML = Math.random() > 0.5 ? '💖' : '💕';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDelay = Math.random() * 2 + 's';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      
+      heartsContainer.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    // Create floating hearts periodically
+    setInterval(createFloatingHeart, 3000);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+</script>
+<!-- Part 3: Success Stories, Blog, Signup and Footer -->
+<style>
+    /* Success Stories Section */
+    .testimonials-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #F8F9FA, #FFFFFF);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="testimonial-hearts" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><text x="20" y="25" text-anchor="middle" fill="rgba(233,30,99,0.05)" font-size="16">💕</text></pattern></defs><rect width="100" height="100" fill="url(%23testimonial-hearts)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(135deg, #E91E63, #C44569, #F8B500);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    }
+
+    .testimonial-info h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2D3436;
+      margin-bottom: 0.2rem;
+    }
+
+    .testimonial-info .couple-names {
+      color: #E91E63;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .testimonial-rating {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .star {
+      color: #F8B500;
+      font-size: 1.2rem;
+    }
+
+    .testimonial-text {
+      color: #757575;
+      line-height: 1.8;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial-text::before {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(233, 30, 99, 0.2);
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-family: serif;
+    }
+
+    .testimonial-date {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    .wedding-emoji {
+      display: inline-block;
+      margin-left: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Blog Section */
+    .blog-section {
+      padding: 6rem 0;
+      background: white;
+      position: relative;
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(233, 30, 99, 0.15);
+    }
+
+    .blog-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(233, 30, 99, 0.1), rgba(196, 69, 105, 0.1));
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-card:hover .blog-image::after {
+      opacity: 0;
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      z-index: 1;
+    }
+
+    .blog-content {
+      padding: 2rem;
+    }
+
+    .blog-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2D3436;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .blog-card:hover .blog-title {
+      color: #E91E63;
+    }
+
+    .blog-excerpt {
+      color: #757575;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #A0A0A0;
+    }
+
+    .blog-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .blog-date {
+      font-weight: 500;
+    }
+
+    .blog-read-more {
+      color: #E91E63;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .blog-read-more:hover {
+      gap: 0.6rem;
+      color: #C44569;
+    }
+
+    /* Signup Section */
+    .signup-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #E91E63, #C44569, #F8B500);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="signup-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23signup-pattern)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .signup-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signup-content h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .signup-content .hindi-text {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #FFE5EC;
+    }
+
+    .signup-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .signup-form input {
+      flex: 1;
+      min-width: 250px;
+      padding: 1.2rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      color: #2D3436;
+      transition: all 0.3s ease;
+    }
+
+    .signup-form input:focus {
+      outline: none;
+      background: white;
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .signup-form input::placeholder {
+      color: #757575;
+    }
+
+    .signup-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: white;
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .signup-btn:hover::before {
+      left: 0;
+    }
+
+    .signup-btn:hover {
+      color: #E91E63;
+      transform: scale(1.05);
+    }
+
+    .signup-features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .signup-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: #2D3436;
+      color: white;
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #E91E63;
+      position: relative;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer-logo .heart-emoji {
+      font-size: 1.8rem;
+    }
+
+    .footer-logo .dilse {
+      color: #E91E63;
+      font-family: 'Kalam', cursive;
+    }
+
+    .footer-description {
+      color: #B0B0B0;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #B0B0B0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: #E91E63;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #E91E63, #C44569);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: #B0B0B0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a {
+      color: #B0B0B0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #E91E63;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .testimonials-container {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+
+      .signup-form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .signup-form input {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .signup-features {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+      }
+    }
+</style>
+
+  <!-- Success Stories Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="section-container">
+      <h2 class="section-title">Success Stories</h2>
+      <p class="section-subtitle">Real couples who found love through Matchify share their heartwarming journeys and experiences.</p>
+      
+      <div class="testimonials-container">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">A&R</div>
+            <div class="testimonial-info">
+              <h4>Perfect Match Found!</h4>
+              <div class="couple-names">Arjun & Riya</div>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <div class="testimonial-text">
+            Matchify ने हमारी ज़िंदगी बदल दी! The algorithm perfectly matched our interests and values. We connected instantly and knew we were meant for each other. Today we're happily married with a beautiful daughter.
+          </div>
+          <div class="testimonial-date">
+            Married: June 2024 <span class="wedding-emoji">💒</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">S&P</div>
+            <div class="testimonial-info">
+              <h4>Love Beyond Boundaries</h4>
+              <div class="couple-names">Siddharth & Priya</div>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <div class="testimonial-text">
+            Despite being from different cities, Matchify helped us find each other. The verified profiles gave us confidence, and the video calling feature helped us bond before meeting in person. सच्चा प्यार मिल गया!
+          </div>
+          <div class="testimonial-date">
+            Engaged: March 2024 <span class="wedding-emoji">💍</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">V&N</div>
+            <div class="testimonial-info">
+              <h4>Second Chance at Love</h4>
+              <div class="couple-names">Vikram & Neha</div>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <div class="testimonial-text">
+            After a difficult divorce, I thought I'd never find love again. Matchify's supportive community and genuine profiles restored my faith. Meeting Neha was the best thing that happened to me. धन्यवाद Matchify!
+          </div>
+          <div class="testimonial-date">
+            Together: Since January 2024 <span class="wedding-emoji">❤️</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="blog-section">
+    <div class="section-container">
+      <h2 class="section-title">Love & Relationship Blog</h2>
+      <p class="section-subtitle">Expert advice, dating tips, and relationship insights to help you on your journey to finding lasting love.</p>
+      
+      <div class="blog-container">
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=200&fit=crop');">
+            <div class="blog-category">Dating Tips</div>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">10 Conversation Starters for Your First Date</h3>
+            <p class="blog-excerpt">Break the ice with these proven conversation starters that will help you connect on a deeper level and make your first date memorable and engaging.</p>
+            <div class="blog-meta">
+              <div class="blog-author">
+                <i class="fas fa-user"></i>
+                <span>Dr. Priya Sharma</span>
+              </div>
+              <div class="blog-date">Dec 15, 2024</div>
+            </div>
+            <a href="B2-DatingTips.html" class="blog-read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=200&fit=crop');">
+            <div class="blog-category">Relationship</div>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Building Trust in Long-Distance Relationships</h3>
+            <p class="blog-excerpt">Learn practical strategies to maintain trust, communication, and intimacy when you and your partner are miles apart. दूरी प्यार को कम नहीं करती।</p>
+            <div class="blog-meta">
+              <div class="blog-author">
+                <i class="fas fa-user"></i>
+                <span>Rahul Verma</span>
+              </div>
+              <div class="blog-date">Dec 10, 2024</div>
+            </div>
+            <a href="B3-Relationships.html" class="blog-read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=200&fit=crop');">
+            <div class="blog-category">Indian Culture</div>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Modern Dating vs Traditional Values: Finding Balance</h3>
+            <p class="blog-excerpt">Navigate the beautiful blend of contemporary dating culture while honoring traditional Indian values and family expectations in your relationship journey.</p>
+            <div class="blog-meta">
+              <div class="blog-author">
+                <i class="fas fa-user"></i>
+                <span>Anjali Gupta</span>
+              </div>
+              <div class="blog-date">Dec 5, 2024</div>
+            </div>
+            <a href="B4-IndianCulture.html" class="blog-read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section id="signup" class="signup-section">
+    <div class="signup-content">
+      <h2>Start Your Love Story Today</h2>
+      <div class="hindi-text">आज ही शुरू करें अपनी प्रेम कहानी</div>
+      <p>Join millions of people who have found their perfect match. Your soulmate is just one click away!</p>
+      
+    
+       <a href="loginpage.html">
+  <button type="button" class="signup-btn">
+    <i class="fas fa-heart"></i> Find My Match
+  </button>
+</a>
+
+      
+      
+      <div class="signup-features">
+        <div class="signup-feature">
+          <i class="fas fa-check"></i>
+          <span>100% Free to Join</span>
+        </div>
+        <div class="signup-feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Verified Profiles</span>
+        </div>
+        <div class="signup-feature">
+          <i class="fas fa-lock"></i>
+          <span>Privacy Protected</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <span class="heart-emoji">💖</span>
+          <span class="dilse">DilSe</span>
+          <span style="color: white;">MATCHIFY</span>
+        </div>
+        <p class="footer-description">
+          India's most trusted dating platform where genuine connections are made. Finding love has never been easier with our AI-powered matching and verified profiles.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
+          <li><a href="#"><i class="fas fa-newspaper"></i> Press</a></li>
+          <li><a href="#"><i class="fas fa-handshake"></i> Partners</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+          <li><a href="#"><i class="fas fa-shield-alt"></i> Safety</a></li>
+          <li><a href="#"><i class="fas fa-flag"></i> Report Issues</a></li>
+          <li><a href="#"><i class="fas fa-comments"></i> Community</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> 24/7 Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+          <li><a href="#"><i class="fas fa-user-secret"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-cookie-bite"></i> Cookie Policy</a></li>
+          <li><a href="#"><i class="fas fa-balance-scale"></i> Disclaimer</a></li>
+          <li><a href="#"><i class="fas fa-gavel"></i> Legal Notice</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        ©2025 Matchify. All rights reserved. | Made with <span style="color: #E91E63;">💖</span> in India
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">Sitemap</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    // Blog card hover effects
+    document.querySelectorAll('.blog-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const image = card.querySelector('.blog-image');
+        if (image) {
+          image.style.transform = 'scale(1.05)';
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        const image = card.querySelector('.blog-image');
+        if (image) {
+          image.style.transform = 'scale(1)';
+        }
+      });
+    });
+
+    // Testimonial card animations
+    const observeTestimonials = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 200);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease';
+      observeTestimonials.observe(card);
+    });
+
+    // Blog card animations
+    const observeBlogs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 150);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.blog-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.5s ease';
+      observeBlogs.observe(card);
+    });
+
+    // Signup form animation
+    const signupSection = document.querySelector('.signup-section');
+    const observeSignup = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const form = entry.target.querySelector('.signup-form');
+          const features = entry.target.querySelector('.signup-features');
+          
+          setTimeout(() => {
+            form.style.opacity = '1';
+            form.style.transform = 'translateY(0)';
+          }, 200);
+          
+          setTimeout(() => {
+            features.style.opacity = '1';
+            features.style.transform = 'translateY(0)';
+          }, 400);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (signupSection) {
+      const form = signupSection.querySelector('.signup-form');
+      const features = signupSection.querySelector('.signup-features');
+      
+      if (form) {
+        form.style.opacity = '0';
+        form.style.transform = 'translateY(30px)';
+        form.style.transition = 'all 0.6s ease';
+      }
+      
+      if (features) {
+        features.style.opacity = '0';
+        features.style.transform = 'translateY(30px)';
+        features.style.transition = 'all 0.6s ease';
+      }
+      
+      observeSignup.observe(signupSection);
+    }
+
+    // Form submission handling
+    document.querySelector('.signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      const btn = this.querySelector('.signup-btn');
+      const originalText = btn.innerHTML;
+      
+      // Simulate form submission
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+      btn.style.background = 'rgba(255, 255, 255, 0.3)';
+      
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Welcome to Matchify!';
+        btn.style.background = 'rgba(76, 175, 80, 0.8)';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = 'rgba(255, 255, 255, 0.2)';
+          this.querySelector('input[type="email"]').value = '';
+          
+          // Show success message
+          createFloatingMessage('Welcome to Matchify! Check your email for next steps. 💖');
+        }, 2000);
+      }, 1500);
+    });
+
+    // Footer animations
+    const observeFooter = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sections = entry.target.querySelectorAll('.footer-section');
+          sections.forEach((section, index) => {
+            setTimeout(() => {
+              section.style.opacity = '1';
+              section.style.transform = 'translateY(0)';
+            }, index * 100);
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const footer = document.querySelector('.footer');
+    if (footer) {
+      const sections = footer.querySelectorAll('.footer-section');
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.5s ease';
+      });
+      observeFooter.observe(footer);
+    }
+
+    // Social links hover effects
+    document.querySelectorAll('.social-link').forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px) scale(1.1) rotate(5deg)';
+      });
+      
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+      });
+    });
+
+    // Floating success message function
+    function createFloatingMessage(text) {
+      const message = document.createElement('div');
+      message.innerHTML = text;
+      message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #E91E63, #C44569);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        font-weight: 500;
+        z-index: 10000;
+        transform: translateX(400px);
+        transition: all 0.5s ease;
+        max-width: 300px;
+        text-align: center;
+      `;
+      
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        message.style.transform = 'translateX(0)';
+      }, 100);
+      
+      setTimeout(() => {
+        message.style.transform = 'translateX(400px)';
+        setTimeout(() => {
+          document.body.removeChild(message);
+        }, 500);
+      }, 4000);
+    }
+
+    // Add subtle parallax effect to sections
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.testimonials-section::before, .signup-section::before');
+      
+      parallaxElements.forEach(element => {
+        const speed = 0.5;
+        element.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Heart animation in footer logo
+    const footerHeart = document.querySelector('.footer-logo .heart-emoji');
+    if (footerHeart) {
+      setInterval(() => {
+        footerHeart.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          footerHeart.style.transform = 'scale(1)';
+        }, 200);
+      }, 3000);
+    }
+
+    // Initialize all animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add loading animation to page
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+      
+      // Initialize heart creation
+      createFloatingHeart();
+    });
+
+    console.log('Matchify website fully loaded with love! 💖');
+</script>
+
+</body>
+</html>=

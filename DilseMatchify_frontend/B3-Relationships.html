@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Trust in Long-Distance Relationships - DilSe Matchify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #E91E63;
+            --secondary-pink: #C44569;
+            --accent-gold: #F8B500;
+            --dark-charcoal: #2D3436;
+            --medium-gray: #757575;
+            --light-gray: #B0B0B0;
+            --background-light: #F8F9FA;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-light), var(--pure-white));
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .blog-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .heart-emoji {
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            border: none;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Article Container */
+        .article-container {
+            background: white;
+            border-radius: 25px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-gold));
+        }
+
+        /* Article Header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .article-category {
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-details h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        .hindi-text {
+            font-style: italic;
+            color: var(--secondary-pink);
+            font-weight: 500;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin: 2.5rem 0 1.5rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-pink);
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .article-content li::marker {
+            color: var(--primary-pink);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(248, 181, 0, 0.05));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+            font-style: italic;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-pink);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .distance-visual {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(248, 181, 0, 0.1));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .distance-visual::before {
+            content: '🌍';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--background-light);
+            text-align: center;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-facebook { background: #3b5998; }
+        .share-twitter { background: #1da1f2; }
+        .share-whatsapp { background: #25d366; }
+        .share-linkedin { background: #0077b5; }
+
+        .back-to-blog {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .article-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-share {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="heart-emoji">💖</span>
+                    <span class="dilse">DilSe MATCHIFY</span>
+                </a>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <article class="article-container">
+            <!-- Article Header -->
+            <div class="article-header">
+                <span class="article-category">💕 Relationship</span>
+                <h1 class="article-title">Building Trust in Long-Distance Relationships</h1>
+                <p class="article-subtitle">
+                    Learn practical strategies to maintain trust, communication, and intimacy when you and your partner are miles apart. Distance may test love, but it never diminishes true connection.
+                </p>
+                <div class="hindi-text">
+                    दूरी प्यार को कम नहीं करती। - Distance doesn't diminish love.
+                </div>
+                <div class="article-meta">
+                    <div class="author-info">
+                        <div class="author-avatar">RV</div>
+                        <div class="author-details">
+                            <h4>Rahul Verma</h4>
+                            <span>Relationship Counselor & Communication Expert</span>
+                        </div>
+                    </div>
+                    <div class="article-date">
+                        <i class="fas fa-calendar-alt"></i> December 10, 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="article-content">
+                <p>
+                    Long-distance relationships are often viewed with skepticism, but they can be some of the strongest and most meaningful connections when built on a foundation of trust, communication, and commitment. In today's interconnected world, many couples find themselves navigating the challenges of loving someone who lives miles away, whether due to career opportunities, education, or family circumstances.
+                </p>
+
+                <div class="distance-visual">
+                    <h3>The Statistics Speak:</h3>
+                    <p>Studies show that 14 million couples in the US are in long-distance relationships, with 3.75 million married couples living apart. Despite the challenges, these relationships can be just as successful as geographically close ones when proper foundations are established.</p>
+                </div>
+
+                <h2>Understanding the Unique Challenges</h2>
+                <p>
+                    Before diving into solutions, it's important to acknowledge that long-distance relationships face unique challenges that couples in close proximity don't encounter. These challenges aren't insurmountable, but they require specific strategies and a deeper level of commitment from both partners.
+                </p>
+
+                <h3>Common Challenges Include:</h3>
+                <ul>
+                    <li><strong>Communication Barriers:</strong> Time zones, work schedules, and technology issues can create gaps in communication</li>
+                    <li><strong>Physical Absence:</strong> Missing physical touch, shared experiences, and spontaneous moments</li>
+                    <li><strong>Trust Concerns:</strong> Anxiety about what your partner is doing when you're not around</li>
+                    <li><strong>Social Pressure:</strong> Dealing with skepticism from friends and family</li>
+                    <li><strong>Future Planning:</strong> Uncertainty about when and how you'll be together permanently</li>
+                </ul>
+
+                <div class="quote-box">
+                    Trust is the bridge that connects two hearts across any distance. It's not about knowing every detail of your partner's day, but about having faith in their love and commitment.
+                </div>
+
+                <h2>Building Unshakeable Trust</h2>
+                <p>
+                    Trust is the cornerstone of any successful relationship, but it becomes even more critical in long-distance partnerships. Building and maintaining trust requires intentional effort from both partners and a commitment to transparency and reliability.
+                </p>
+
+                <h3>Fundamental Trust-Building Strategies:</h3>
+
+                <div class="highlight-box">
+                    <h4>1. Consistent Communication</h4>
+                    <p>
+                        Establish regular communication patterns that work for both of your schedules. This doesn't mean talking every minute, but having predictable times when you connect. Whether it's a good morning text, a lunch break call, or a bedtime video chat, consistency builds security.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>2. Complete Transparency</h4>
+                    <p>
+                        Share your daily activities, feelings, and experiences openly. This includes the mundane details of your day as well as your concerns and worries. Transparency eliminates the unknown that breeds insecurity.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>3. Keep Your Promises</h4>
+                    <p>
+                        If you say you'll call at 8 PM, call at 8 PM. If you promise to visit next month, make it happen. Small broken promises can erode trust over time, while kept promises build it brick by brick.
+                    </p>
+                </div>
+
+                <div class="hindi-text">
+                    "विश्वास वो नींव है जिस पर प्रेम का महल खड़ा होता है।" - Trust is the foundation upon which the palace of love is built.
+                </div>
+
+                <h2>Mastering Long-Distance Communication</h2>
+                <p>
+                    Communication in long-distance relationships isn't just about frequency—it's about quality, creativity, and emotional connection. The goal is to make your partner feel present in your life despite the physical distance.
+                </p>
+
+                <h3>Effective Communication Techniques:</h3>
+                <ul>
+                    <li><strong>Video Calls Over Text:</strong> Whenever possible, choose video calls over text messages to maintain visual connection</li>
+                    <li><strong>Share Your Environment:</strong> Give virtual tours of your day, show what you're eating, where you're going</li>
+                    <li><strong>Active Listening:</strong> When your partner talks, give them your full attention—no multitasking</li>
+                    <li><strong>Express Emotions Clearly:</strong> Don't assume your partner knows how you're feeling; express it explicitly</li>
+                    <li><strong>Ask Meaningful Questions:</strong> Go beyond "How was your day?" to "What made you smile today?"</li>
+                </ul>
+
+                <h2>Creative Ways to Stay Connected</h2>
+                <p>
+                    Innovation in maintaining connection can transform your long-distance relationship from a challenge into an adventure. Here are creative strategies that successful long-distance couples use:
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Digital Date Ideas:</h3>
+                    <p>
+                        <strong>Virtual Movie Nights:</strong> Watch movies together using streaming party apps while video chatting.<br>
+                        <strong>Online Gaming:</strong> Play games together, from mobile apps to online board games.<br>
+                        <strong>Cooking Together:</strong> Prepare the same meal while video chatting and eat "together."<br>
+                        <strong>Virtual Tours:</strong> Take online museum tours or city walks together.<br>
+                        <strong>Reading Together:</strong> Read the same book and discuss chapters via call.
+                    </p>
+                </div>
+
+                <h3>Surprise and Delight:</h3>
+                <ul>
+                    <li><strong>Surprise Deliveries:</strong> Send unexpected gifts, flowers, or their favorite food</li>
+                    <li><strong>Handwritten Letters:</strong> In our digital age, physical letters carry special emotional weight</li>
+                    <li><strong>Care Packages:</strong> Send packages filled with local treats or meaningful items</li>
+                    <li><strong>Coordinate with Friends:</strong> Organize surprise visits from mutual friends</li>
+                    <li><strong>Photo Sharing:</strong> Send random photos throughout the day to share your experiences</li>
+                </ul>
+
+                <div class="quote-box">
+                    Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day, regardless of the distance between you.
+                </div>
+
+                <h2>Managing Jealousy and Insecurity</h2>
+                <p>
+                    Jealousy and insecurity are natural emotions in long-distance relationships, but they can be destructive if not managed properly. The key is to address these feelings constructively rather than letting them fester.
+                </p>
+
+                <h3>Strategies for Managing Insecurity:</h3>
+                <ul>
+                    <li><strong>Communicate Your Feelings:</strong> Share your insecurities with your partner instead of letting them build up</li>
+                    <li><strong>Focus on Facts:</strong> Distinguish between actual concerns and imagined scenarios</li>
+                    <li><strong>Build Your Own Life:</strong> Maintain hobbies, friendships, and goals independent of your relationship</li>
+                    <li><strong>Set Boundaries:</strong> Discuss what behaviors make you uncomfortable and establish mutual boundaries</li>
+                    <li><strong>Practice Self-Care:</strong> Take care of your mental and physical health to build confidence</li>
+                </ul>
+
+                <div class="hindi-text">
+                    "जो प्यार सच्चा है, वो दूरी की परीक्षा में और भी मजबूत होता है।" - True love becomes even stronger when tested by distance.
+                </div>
+
+                <h2>Planning for the Future</h2>
+                <p>
+                    One of the most important aspects of a successful long-distance relationship is having a clear plan for eventually being together. This shared vision gives both partners something to work toward and helps maintain motivation during difficult times.
+                </p>
+
+                <h3>Creating Your Reunion Plan:</h3>
+                <ul>
+                    <li><strong>Set a Timeline:</strong> Establish realistic goals for when you'll be in the same location</li>
+                    <li><strong>Discuss Logistics:</strong> Talk about who will move, career implications, and practical considerations</li>
+                    <li><strong>Plan Regular Visits:</strong> Schedule visits in advance to have something to look forward to</li>
+                    <li><strong>Prepare Financially:</strong> Budget for travel costs and eventual relocation expenses</li>
+                    <li><strong>Communicate with Families:</strong> Keep loved ones informed about your plans and timeline</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Making Visits Count:</h3>
+                    <p>
+                        When you do get to spend time together, make it meaningful. Balance relationship time with meeting friends and family, experiencing each other's daily routines, and creating new memories together. These visits should strengthen your bond and give you energy for the next period apart.
+                    </p>
+                </div>
+
+                <h2>When to Seek Support</h2>
+                <p>
+                    Long-distance relationships can be emotionally challenging, and there's no shame in seeking support when needed. Professional guidance can provide valuable tools and perspectives that strengthen your relationship.
+                </p>
+
+                <h3>Consider Professional Help When:</h3>
+                <ul>
+                    <li>Communication consistently breaks down despite your efforts</li>
+                    <li>Trust issues become overwhelming</li>
+                    <li>You're struggling with depression or anxiety related to the distance</li>
+                    <li>You're having difficulty planning for the future together</li>
+                    <li>The relationship is negatively impacting other areas of your life</li>
+                </ul>
+
+                <h2>Success Stories and Hope</h2>
+                <p>
+                    Many couples have successfully navigated long-distance relationships and emerged stronger. These relationships often develop exceptional communication skills, deep emotional intimacy, and unshakeable trust that serves them well throughout their lives together.
+                </p>
+
+                <div class="quote-box">
+                    Distance is just a test to see how far love can travel. And for those who truly love each other, the distance becomes just a number, and love becomes infinite.
+                </div>
+
+                <h2>Conclusion: Love Knows No Distance</h2>
+                <p>
+                    Building trust in a long-distance relationship requires patience, commitment, and creativity, but it's absolutely possible. The key is to focus on what you can control: your communication, your commitment, and your attitude toward the relationship.
+                </p>
+
+                <p>
+                    Remember that every couple's journey is unique, and what works for others may need to be adapted for your specific situation. Stay flexible, keep communicating, and never lose sight of the love that brought you together in the first place.
+                </p>
+
+                <p>
+                    Distance may test your love, but it can also strengthen it. When you finally close that distance permanently, you'll have a relationship built on a foundation of trust, communication, and commitment that can weather any storm.
+                </p>
+
+                <div class="hindi-text">
+                    "मोहब्बत में फासले मायने नहीं रखते, बस एहसास मायने रखते हैं।" <br>
+                    In love, distances don't matter; only feelings matter.
+                </div>
+            </div>
+
+            <!-- Article Footer -->
+            <div class="article-footer">
+                <div class="social-share">
+                    <a href="#" class="share-btn share-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn share-twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <a href="blog.html" class="back-to-blog">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog Page
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Header button functionality
+        document.querySelector('.back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Add loading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Homepage';
+                console.log('Navigate to homepage');
+            }, 1000);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList.contains('share-facebook') ? 'Facebook' :
+                                this.classList.contains('share-twitter') ? 'Twitter' :
+                                this.classList.contains('share-whatsapp') ? 'WhatsApp' : 'LinkedIn';
+                
+                // Add animation
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log(`Share on ${platform}`);
+            });
+        });
+
+        // Back to blog functionality
+        document.querySelector('.back-to-blog').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Blog Page';
+                console.log('Navigate to blog');
+            }, 1000);
+        });
+
+        // Smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add some interactivity to the heart emoji
+        document.querySelector('.heart-emoji').addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'pulse 2s infinite';
+            }, 10);
+        });
+    </script>
+</body>
+</html>
