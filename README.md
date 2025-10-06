@@ -17,7 +17,6 @@ This web-based dating platform was built as part of my full stack internship. It
 
 ---
 
-
 ## ✨ Key Features
 - 📝 User Registration & Login (with validation)  
 - 👤 Profile Creation & Management  
