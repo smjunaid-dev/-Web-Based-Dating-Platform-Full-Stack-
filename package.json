@@ -6,13 +6,26 @@
   "type": "module",
   "scripts": {
     "dev": "echo 'Open DilseMatchify_frontend/loginpage.html in your browser'",
+    "backend": "node backend/server.js",
+    "start": "concurrently \"npm run backend\" \"npx http-server DilseMatchify_frontend -p 8080 --cors\"",
     "build": "echo 'Build successful - No build step required for static site'",
     "test": "echo \"No tests specified\" && exit 0"
   },
-  "keywords": ["dating", "matchmaking", "supabase", "authentication"],
+  "keywords": [
+    "dating",
+    "matchmaking",
+    "supabase",
+    "authentication"
+  ],
   "author": "Shaik Mohammed Junaid",
   "license": "ISC",
   "dependencies": {
-    "@supabase/supabase-js": "^2.78.0"
+    "@supabase/supabase-js": "^2.78.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "ethers": "^6.15.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
   }
 }

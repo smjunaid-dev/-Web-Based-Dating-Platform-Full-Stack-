@@ -678,12 +678,20 @@
             <span>or continue with</span>
           </div>
           <div class="social-buttons">
+            <button class="social-btn wallet" id="walletConnectBtn" title="Connect with Wallet (MetaMask)" style="background: linear-gradient(135deg, #F6851B, #E2761B); width: 100%; margin-bottom: 1rem;">
+              <i class="fas fa-wallet"></i> Connect Wallet
+            </button>
             <button class="social-btn google" title="Continue with Google">
               <i class="fab fa-google"></i>
             </button>
             <button class="social-btn facebook" title="Continue with Facebook">
               <i class="fab fa-facebook-f"></i>
             </button>
+          </div>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="#" id="customWalletLink" style="color: var(--primary); font-size: 0.9rem; text-decoration: none;">
+              <i class="fas fa-key"></i> Create or Import Custom Wallet
+            </a>
           </div>
         </div>
         
@@ -718,7 +726,9 @@
 
   <script type="module">
     import { signIn } from './js/auth.js';
+    import { web3AuthManager, createCustomWallet, loadCustomWallet, importWalletFromMnemonic, hasCustomWallet } from './js/web3-auth.js';
 
+    // Email/Password Login
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -751,6 +761,113 @@
 
       if (data && data.user) {
         window.location.href = 'homepage.html';
+      }
+    });
+
+    // Web3 Wallet Connection
+    document.getElementById('walletConnectBtn').addEventListener('click', async function(e) {
+      e.preventDefault();
+
+      const button = this;
+      const originalText = button.innerHTML;
+
+      try {
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        button.disabled = true;
+
+        const result = await web3AuthManager.authenticateWithWallet();
+
+        if (result.success) {
+          alert(`✅ ${result.message}\n\nWallet: ${result.walletAddress.substring(0, 10)}...`);
+          window.location.href = 'homepage.html';
+        }
+      } catch (error) {
+        button.innerHTML = originalText;
+        button.disabled = false;
+
+        let errorMessage = 'Wallet connection failed. ';
+
+        if (error.message.includes('not detected')) {
+          errorMessage += 'Please install MetaMask or a compatible wallet.';
+        } else if (error.message.includes('User rejected')) {
+          errorMessage += 'Connection request was rejected.';
+        } else {
+          errorMessage += error.message;
+        }
+
+        alert(errorMessage);
+      }
+    });
+
+    // Custom Wallet Management
+    document.getElementById('customWalletLink').addEventListener('click', async function(e) {
+      e.preventDefault();
+
+      const hasWallet = hasCustomWallet();
+
+      if (hasWallet) {
+        // Load existing wallet
+        const password = prompt('Enter your wallet password:');
+        if (!password) return;
+
+        try {
+          const wallet = await loadCustomWallet(password);
+          alert(`✅ Wallet loaded!\n\nAddress: ${wallet.address}`);
+
+          // Now authenticate with this wallet
+          const manager = web3AuthManager;
+          manager.walletAddress = wallet.address;
+          manager.signer = wallet;
+
+          const { nonce, message } = await manager.requestNonce(wallet.address);
+          const signature = await wallet.signMessage(message);
+          const result = await manager.verifySignature(wallet.address, signature, message);
+
+          if (result.success) {
+            localStorage.setItem('web3_auth_token', result.token);
+            localStorage.setItem('web3_wallet_address', result.walletAddress);
+            localStorage.setItem('web3_user_id', result.userId);
+            window.location.href = 'homepage.html';
+          }
+        } catch (error) {
+          alert('❌ Failed to load wallet. Check your password.');
+        }
+      } else {
+        // Create or import new wallet
+        const choice = confirm('Create a new wallet?\n\nOK = Create New\nCancel = Import Existing');
+
+        if (choice) {
+          // Create new wallet
+          const password = prompt('Create a password for your wallet (minimum 8 characters):');
+          if (!password || password.length < 8) {
+            alert('Password must be at least 8 characters.');
+            return;
+          }
+
+          try {
+            const { address, mnemonic } = await createCustomWallet(password);
+            alert(`✅ Wallet Created!\n\nAddress: ${address}\n\n⚠️ IMPORTANT: Save this recovery phrase:\n\n${mnemonic}\n\nWrite it down and store it securely. You'll need it to recover your wallet.`);
+          } catch (error) {
+            alert('❌ Failed to create wallet.');
+          }
+        } else {
+          // Import existing wallet
+          const mnemonic = prompt('Enter your 12 or 24 word recovery phrase:');
+          if (!mnemonic) return;
+
+          const password = prompt('Create a password for your wallet:');
+          if (!password || password.length < 8) {
+            alert('Password must be at least 8 characters.');
+            return;
+          }
+
+          try {
+            const { address } = await importWalletFromMnemonic(mnemonic, password);
+            alert(`✅ Wallet Imported!\n\nAddress: ${address}`);
+          } catch (error) {
+            alert('❌ Failed to import wallet. Check your recovery phrase.');
+          }
+        }
       }
     });
 

@@ -1,0 +1,6 @@
+🚀 Web3 Auth API Server running on http://localhost:3001
+📊 Endpoints:
+   GET  /api/auth/nonce/:walletAddress
+   POST /api/auth/verify
+   POST /api/auth/link-wallet
+   GET  /api/health
