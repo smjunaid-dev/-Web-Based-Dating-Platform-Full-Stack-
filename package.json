@@ -1,0 +1,18 @@
+{
+  "name": "dilse-matchify",
+  "version": "1.0.0",
+  "description": "A full-stack matrimonial platform with AI-powered matching algorithm",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Open DilseMatchify_frontend/loginpage.html in your browser'",
+    "build": "echo 'Build successful - No build step required for static site'",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["dating", "matchmaking", "supabase", "authentication"],
+  "author": "Shaik Mohammed Junaid",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.78.0"
+  }
+}

@@ -575,7 +575,7 @@
                 <div class="step"></div>
             </div>
 
-            <form id="signupForm" action="signup.php" method="POST" enctype="multipart/form-data">
+            <form id="signupForm">
 
                 <!-- Personal Information -->
                 <div class="section fade-in">
@@ -603,6 +603,16 @@
                         <div class="form-group">
                             <label for="phone">Phone Number <span class="required">*</span></label>
                             <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password" class="form-control" required placeholder="Create a strong password" minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required placeholder="Confirm your password" minlength="6">
                         </div>
                     </div>
                     <div class="form-row">
@@ -1170,23 +1180,94 @@
         });
 
         // Form submission
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Show loading state
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Profile...';
             submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                alert('🎉 Congratulations! Your profile has been created successfully!\n\nYou can now start browsing profiles and finding your perfect match.');
-                
-                // Reset button
+
+            const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked'))
+                .map(cb => cb.value);
+
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                gender: document.getElementById('gender').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                country: document.getElementById('country').value,
+                religion: document.getElementById('religion').value,
+                caste: document.getElementById('caste').value,
+                motherTongue: document.getElementById('motherTongue').value,
+                education: document.getElementById('education').value,
+                occupation: document.getElementById('occupation').value,
+                company: document.getElementById('company').value,
+                income: document.getElementById('income').value,
+                height: document.getElementById('height').value,
+                bodyType: document.getElementById('bodyType').value,
+                complexion: document.getElementById('complexion').value,
+                maritalStatus: document.getElementById('maritalStatus').value,
+                smokingHabits: document.getElementById('smokingHabits').value,
+                drinkingHabits: document.getElementById('drinkingHabits').value,
+                dietaryPreferences: document.getElementById('dietaryPreferences').value,
+                petPreference: document.getElementById('petPreference').value,
+                aboutMe: document.getElementById('aboutMe').value,
+                lookingFor: document.getElementById('lookingFor').value,
+                familyValues: document.getElementById('familyValues').value,
+                interests: interests,
+                profileVisibility: document.getElementById('profileVisibility').value,
+                contactPreference: document.getElementById('contactPreference').value,
+                emailNotifications: document.querySelector('input[name="emailNotifications"]').checked,
+                partnerPreferences: {
+                    min_age: parseInt(document.getElementById('minAge').value) || null,
+                    max_age: parseInt(document.getElementById('maxAge').value) || null,
+                    preferred_height: document.getElementById('preferredHeight').value,
+                    preferred_education: document.getElementById('preferredEducation').value,
+                    preferred_religion: document.getElementById('preferredReligion').value,
+                    preferred_location: document.getElementById('preferredLocation').value,
+                    preferred_marital_status: document.getElementById('preferredMaritalStatus').value
+                }
+            };
+
+            const { signUp } = await import('./js/auth.js');
+            const { data, error } = await signUp(
+                document.getElementById('email').value,
+                password,
+                userData
+            );
+
+            if (error) {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+
+                let errorMessage = 'Signup failed. Please try again.';
+                if (error.message.includes('already registered')) {
+                    errorMessage = 'This email is already registered. Please login instead.';
+                } else if (error.message.includes('weak password')) {
+                    errorMessage = 'Password is too weak. Please use a stronger password.';
+                }
+
+                alert(errorMessage);
+                return;
+            }
+
+            alert('🎉 Congratulations! Your profile has been created successfully!\n\nYou can now start browsing profiles and finding your perfect match.');
+
+            setTimeout(() => {
+                window.location.href = 'homepage.html';
+            }, 1000);
         });
 
         // Smooth scrolling for sections

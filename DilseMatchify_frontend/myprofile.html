@@ -693,65 +693,171 @@
         </div>
     </div>
 
-    <script>
-        function toggleEdit(section) {
-            // This would normally enable/disable editing for specific sections
+    <script type="module">
+        import { checkAuth, getUserProfile, signOut } from './js/auth.js';
+        import { updateProfile, getProfileStats } from './js/profile.js';
+
+        let currentProfile = null;
+
+        async function loadProfile() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) return;
+
+            const { data, error } = await getUserProfile();
+
+            if (error) {
+                console.error('Error loading profile:', error);
+                alert('Failed to load profile. Please try again.');
+                return;
+            }
+
+            if (data) {
+                currentProfile = data;
+                populateProfile(data);
+                await loadStats();
+            }
+        }
+
+        function populateProfile(profile) {
+            document.querySelector('.profile-name').textContent = `${profile.first_name} ${profile.last_name}`;
+            document.getElementById('fullName').value = `${profile.first_name} ${profile.last_name}`;
+            document.getElementById('age').value = calculateAge(profile.date_of_birth);
+            document.getElementById('location').value = `${profile.city}, ${profile.state}`;
+            document.getElementById('occupation').value = profile.occupation || 'Not specified';
+            document.getElementById('education').value = profile.education || '';
+            document.getElementById('aboutMe').value = profile.about_me || '';
+            document.getElementById('lookingFor').value = profile.looking_for || '';
+
+            if (profile.profile_photo_url) {
+                document.querySelector('.profile-picture img').src = profile.profile_photo_url;
+            }
+
+            if (profile.interests && Array.isArray(profile.interests)) {
+                const interestsGrid = document.getElementById('interestsGrid');
+                interestsGrid.innerHTML = '';
+
+                profile.interests.forEach(interest => {
+                    const tag = document.createElement('div');
+                    tag.className = 'interest-tag';
+                    tag.innerHTML = `
+                        <span>${interest}</span>
+                        <i class="fas fa-times remove" onclick="window.removeInterest(this)"></i>
+                    `;
+                    interestsGrid.appendChild(tag);
+                });
+
+                const addBtn = document.createElement('div');
+                addBtn.className = 'interest-tag add-interest';
+                addBtn.onclick = window.addInterest;
+                addBtn.innerHTML = '<i class="fas fa-plus"></i><span>Add Interest</span>';
+                interestsGrid.appendChild(addBtn);
+            }
+        }
+
+        async function loadStats() {
+            const { data, error } = await getProfileStats();
+
+            if (!error && data) {
+                document.querySelectorAll('.stat-number')[0].textContent = data.matches;
+                document.querySelectorAll('.stat-number')[1].textContent = data.likes + '+';
+            }
+        }
+
+        function calculateAge(dateOfBirth) {
+            if (!dateOfBirth) return '';
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        window.toggleEdit = function(section) {
             console.log(`Toggling edit mode for: ${section}`);
-        }
+        };
 
-        function uploadPhoto() {
-            // Simulate photo upload
-            alert('Photo upload functionality would open here');
-        }
+        window.uploadPhoto = function() {
+            alert('Photo upload functionality coming soon!');
+        };
 
-        function removeInterest(element) {
+        window.removeInterest = function(element) {
             element.parentElement.remove();
-        }
+        };
 
-        function addInterest() {
+        window.addInterest = function() {
             const interestName = prompt('Enter a new interest:');
             if (interestName && interestName.trim()) {
                 const interestsGrid = document.getElementById('interestsGrid');
                 const addButton = interestsGrid.querySelector('.add-interest');
-                
+
                 const newInterest = document.createElement('div');
                 newInterest.className = 'interest-tag';
                 newInterest.innerHTML = `
                     <span>${interestName.trim()}</span>
-                    <i class="fas fa-times remove" onclick="removeInterest(this)"></i>
+                    <i class="fas fa-times remove" onclick="window.removeInterest(this)"></i>
                 `;
-                
+
                 interestsGrid.insertBefore(newInterest, addButton);
             }
-        }
+        };
 
-        function saveProfile() {
-            // Simulate saving profile
+        window.saveProfile = async function() {
+            const interests = Array.from(document.querySelectorAll('.interest-tag:not(.add-interest) span'))
+                .map(span => span.textContent);
+
+            const [firstName, ...lastNameParts] = document.getElementById('fullName').value.split(' ');
+            const lastName = lastNameParts.join(' ');
+
+            const updatedData = {
+                first_name: firstName,
+                last_name: lastName,
+                occupation: document.getElementById('occupation').value,
+                education: document.getElementById('education').value,
+                about_me: document.getElementById('aboutMe').value,
+                looking_for: document.getElementById('lookingFor').value,
+                interests: interests
+            };
+
+            const { data, error } = await updateProfile(updatedData);
+
             const successMessage = document.getElementById('successMessage');
+
+            if (error) {
+                alert('Failed to save profile. Please try again.');
+                return;
+            }
+
             successMessage.style.display = 'block';
-            
-            // Scroll to top to show success message
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Hide success message after 5 seconds
+
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 5000);
-        }
+        };
 
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Stagger animation for cards
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadProfile();
+
             const cards = document.querySelectorAll('.card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(30px)';
-                    card.offsetHeight; // Force reflow
+                    card.offsetHeight;
                     card.style.transition = 'all 0.6s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, index * 100);
+            });
+
+            document.querySelectorAll('a[href="blhp.html"]').forEach(link => {
+                link.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    await signOut();
+                });
             });
         });
     </script>
