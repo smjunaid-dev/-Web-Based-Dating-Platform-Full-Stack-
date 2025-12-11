@@ -9,7 +9,7 @@
 - **Institution:** SRM University, AP  
 - **Role:** Frontend Developer  
 - **Company:** Trinwo Solutions Pvt. Ltd.  
-
+ 
 ---
 
 ## 🚀 Project Overview
